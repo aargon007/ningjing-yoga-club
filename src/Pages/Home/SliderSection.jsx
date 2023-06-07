@@ -71,7 +71,7 @@ const SliderSection = () => {
 					slot="container-start"
 					className="parallax-bg"
 					style={{
-						"background-image":
+						"backgroundImage":
 							"url(https://i.ibb.co/FBHvNgX/Screenshot-2023-06-07-124036.png)",
 					}}
 					data-swiper-parallax="-23%"
