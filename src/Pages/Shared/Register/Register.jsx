@@ -10,11 +10,15 @@ import {
 import { useForm } from "react-hook-form";
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import useAuth from "../../../Hooks/useAuth";
 
 const Register = () => {
 	const [selectedOption, setSelectedOption] = useState("");
-    const [confirmPass, setConfirmPass] = useState(null);
+	const { createUser, updateUserProfile, user } = useAuth();
+	const navigate = useNavigate();
+	const [confirmPass, setConfirmPass] = useState(null);
 
 	const {
 		register,
@@ -32,15 +36,50 @@ const Register = () => {
 
 	const onSubmit = (data) => {
 		data.gender = selectedOption;
+		const { name, email, password, confirm, photo, gender, phone, address } =
+			data;
 
-        if(data.confirm !== data.password){
-            setConfirmPass('Password did not match');
-            return
-        }
-		console.log(data);
-        reset();
-        setConfirmPass('')
+		if (confirm !== password) {
+			setConfirmPass("Password did not match");
+			return;
+		}
+
+		//add info in db
+		const userInfo = {
+			name,
+			email,
+			phone,
+			photo,
+			gender,
+			address,
+			role: "student",
+		};
+
+		createUser(email, password).then((result) => {
+			const loggedUser = result.user;
+			console.log(loggedUser);
+
+			updateUserProfile(name, photo)
+				.then(() => {})
+				.catch((error) => console.log(error));
+			axios.post("http://localhost:5000/users", userInfo).then((res) => {
+				console.log(res);
+				// reset();
+				// Swal.fire({
+				// 	position: "top-end",
+				// 	icon: "success",
+				// 	title: "User created successfully.",
+				// 	showConfirmButton: false,
+				// 	timer: 1500,
+				// });
+				// navigate("/");
+			});
+		});
+		// console.log(userInfo);
+		// console.log(data);
+		setConfirmPass("");
 	};
+	console.log(user);
 
 	return (
 		<div className="flex pb-10">
@@ -105,7 +144,11 @@ const Register = () => {
 										placeholder="Enter your email"
 									/>
 								</div>
-                                {errors.email && <span className="text-red-600 text-sm">Email is required</span>}
+								{errors.email && (
+									<span className="text-red-600 text-sm">
+										Email is required
+									</span>
+								)}
 							</div>
 
 							<div className="flex flex-col mb-6">
@@ -125,15 +168,28 @@ const Register = () => {
 									<input
 										id="password"
 										type="password"
-										{...register("password", { required: true, minLength: 6,
-                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/ })}
+										{...register("password", {
+											required: true,
+											minLength: 6,
+											pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
+										})}
 										className="inputField"
 										placeholder="Enter your password"
 									/>
 								</div>
-                                {errors.password?.type === 'required' && <p className="text-red-600 text-sm">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600 text-sm">Password must be 6 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-600 text-sm">Password must have one capital letter and special character.</p>}
+								{errors.password?.type === "required" && (
+									<p className="text-red-600 text-sm">Password is required</p>
+								)}
+								{errors.password?.type === "minLength" && (
+									<p className="text-red-600 text-sm">
+										Password must be 6 characters
+									</p>
+								)}
+								{errors.password?.type === "pattern" && (
+									<p className="text-red-600 text-sm">
+										Password must have one capital letter and special character.
+									</p>
+								)}
 							</div>
 
 							<div className="flex flex-col mb-6">
@@ -158,7 +214,9 @@ const Register = () => {
 										placeholder="Enter your password"
 									/>
 								</div>
-                                {confirmPass && <p className="text-red-600">Password did not match</p>}
+								{confirmPass && (
+									<p className="text-red-600">Password did not match</p>
+								)}
 							</div>
 
 							<div className="flex flex-col mb-6">
