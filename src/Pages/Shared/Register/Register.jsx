@@ -16,9 +16,11 @@ import useAuth from "../../../Hooks/useAuth";
 
 const Register = () => {
 	const [selectedOption, setSelectedOption] = useState("");
-	const { createUser, updateUserProfile, user } = useAuth();
-	const navigate = useNavigate();
 	const [confirmPass, setConfirmPass] = useState(null);
+	const [successUser, setSuccessUser] = useState(null);
+	const [emailError, setEmailError] = useState(null);
+	const { createUser, updateUserProfile, user, setUser, logOut } = useAuth();
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -55,31 +57,48 @@ const Register = () => {
 			role: "student",
 		};
 
-		createUser(email, password).then((result) => {
-			const loggedUser = result.user;
-			console.log(loggedUser);
+		createUser(email, password)
+			.then((result) => {
+				const loggedUser = result.user;
+				reset();
+				setConfirmPass("");
+				setEmailError(null);
+				setSuccessUser(null);
 
-			updateUserProfile(name, photo)
-				.then(() => {})
-				.catch((error) => console.log(error));
-			axios.post("http://localhost:5000/users", userInfo).then((res) => {
-				console.log(res);
-				// reset();
-				// Swal.fire({
-				// 	position: "top-end",
-				// 	icon: "success",
-				// 	title: "User created successfully.",
-				// 	showConfirmButton: false,
-				// 	timer: 1500,
-				// });
-				// navigate("/");
+				// console.log(loggedUser);
+
+				updateUserProfile(name, photo)
+					.then(() => {
+						Swal.fire({
+							position: "top-end",
+							icon: "success",
+							title: "User created successfully.",
+							showConfirmButton: false,
+							timer: 1500,
+						});
+						setUser(null);
+					})
+					.catch((error) => console.log(error));
+				axios
+					.post(
+						"https://breakable-baseball-production.up.railway.app/users",
+						userInfo
+					)
+					.then((res) => {
+						console.log(res);
+					})
+					.catch((err) => console.log(err));
+			})
+			.catch((error) => {
+				console.log(error.message);
+				if (error.code == "auth/invalid-email") {
+					setEmailError("Invalid email. Please provide a valid email");
+				}
+				if (error.code == "auth/email-already-in-use") {
+					setSuccessUser("You have Already Registerd!");
+				}
 			});
-		});
-		// console.log(userInfo);
-		// console.log(data);
-		setConfirmPass("");
 	};
-	console.log(user);
 
 	return (
 		<div className="flex pb-10">
@@ -96,7 +115,16 @@ const Register = () => {
 					<div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
 						Enter your credentials to get access account
 					</div>
-
+					{successUser && (
+						<div className="text-center p-3 bg-green-50 text-green-600 my-3 rounded-md">
+							<p>{successUser}</p>
+						</div>
+					)}
+					{emailError && (
+						<div className="text-sm mt-5 py-3 text-red-500 bg-red-50 text-center rounded-md">
+							<p>{emailError}</p>
+						</div>
+					)}
 					<div className="mt-10">
 						<form
 							className="grid lg:grid-cols-2 grid-cols-1 md:gap-5"

@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import useAuth from "../../Hooks/useAuth";
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
+	const { user, logOut, setUser } = useAuth();
+
+	const handleLogOut = () => {
+		logOut()
+			.then((result) => {
+				setUser(null);
+			})
+			.catch((error) => {
+				console.log(error.message);
+			});
+	};
 
 	return (
 		<div>
@@ -46,12 +58,48 @@ const NavBar = () => {
 							<span></span>
 						</div>
 
-						<Link
-							to="/login"
-							className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
-						>
-							Login
-						</Link>
+						{user && (
+							<div
+								className="lg:flex hidden justify-center items-center gap-2 bg-blue-50 py-1 px-2 rounded-lg"
+								title={user?.displayName}
+							>
+								{user?.photoURL ? (
+									<img
+										src={user?.photoURL}
+										className="w-8 h-8 rounded-full"
+										title={user?.displayName}
+									/>
+								) : (
+									<img
+										src="https://www.pngall.com/wp-content/uploads/5/Profile-Transparent.png"
+										className="w-8 h-8 rounded-full"
+										title={user?.displayName}
+									/>
+								)}
+								{user?.displayName ? (
+									<p className="">{user?.displayName}</p>
+								) : (
+									<p>user</p>
+								)}
+							</div>
+						)}
+
+						{user ? (
+							<button
+								onClick={handleLogOut}
+								className="hidden lg:block text-white bg-purple-700 hover:bg-purple-800  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 "
+							>
+								Log Out
+							</button>
+						) : (
+							<Link
+								to="/login"
+								className="hidden lg:block text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700"
+							>
+								Login
+							</Link>
+						)}
+
 						<span className="sr-only">Open main menu</span>
 						{open ? (
 							<HiX
@@ -67,7 +115,7 @@ const NavBar = () => {
 							/>
 						)}
 					</div>
-					<div className="items-center justify-between w-full lg:flex lg:w-auto lg:order-1">
+					<div className="mt-2 lg:mt-0 items-center justify-between w-full lg:flex lg:w-auto lg:order-1">
 						<ul
 							className={`flex-col mt-4 font-medium ${
 								open ? "" : "hidden lg:flex"
@@ -106,16 +154,35 @@ const NavBar = () => {
 									Classes
 								</NavLink>
 							</li>
+							{user && (
+								<li>
+									<NavLink
+										to="/dashboard"
+										className={({ isActive }) =>
+											isActive ? "active" : "default"
+										}
+										aria-current="dashboard"
+									>
+										Dashboard
+									</NavLink>
+								</li>
+							)}
 							<li>
-								<NavLink
-									to="/dashboard"
-									className={({ isActive }) =>
-										isActive ? "active" : "default"
-									}
-									aria-current="dashboard"
-								>
-									Dashboard
-								</NavLink>
+								{user ? (
+									<button
+										onClick={handleLogOut}
+										className="lg:hidden block text-white bg-purple-700 hover:bg-purple-800  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 "
+									>
+										Log Out
+									</button>
+								) : (
+									<Link
+										to="/login"
+										className="lg:hidden block text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700"
+									>
+										Login
+									</Link>
+								)}
 							</li>
 						</ul>
 					</div>
