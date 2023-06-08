@@ -8,12 +8,28 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Login = () => {
+
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+		reset,
+	} = useForm();
+
 	const [passwordVisible, setPasswordVisible] = useState(false);
 
 	const togglePasswordVisibility = () => {
 		setPasswordVisible(!passwordVisible);
+	};
+
+	const onSubmit = (data) => {
+		console.log(data);
+        reset();
 	};
 
 	return (
@@ -42,7 +58,7 @@ const Login = () => {
 						</div>
 					</div>
 					<div className="mt-10">
-						<form>
+						<form onSubmit={handleSubmit(onSubmit)}>
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="email"
@@ -58,11 +74,12 @@ const Login = () => {
 									<input
 										id="email"
 										type="email"
-										name="email"
+										{...register("email", { required: true })}
 										className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
 										placeholder="E-Mail Address"
 									/>
 								</div>
+								{errors.email && <span className="text-red-600 text-sm">Email is required</span>}
 							</div>
 
 							<div className="flex flex-col mb-6">
@@ -80,7 +97,7 @@ const Login = () => {
 									<input
 										id="password"
 										type={passwordVisible ? "text" : "password"}
-										name="password"
+										{...register("password", { required: true})}
 										className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
 										placeholder="Password"
 									/>
@@ -92,6 +109,7 @@ const Login = () => {
 										)}
 									</div>
 								</div>
+								{errors.password?.type === 'required' && <p className="text-red-600 text-sm">Password is required</p>}
 							</div>
 
 							{/* <div className="flex items-center mb-6 -mt-4">

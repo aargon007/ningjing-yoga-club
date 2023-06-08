@@ -131,8 +131,8 @@ const Register = () => {
 										placeholder="Enter your password"
 									/>
 								</div>
-                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                                {errors.password?.type === 'required' && <p className="text-red-600 text-sm">Password is required</p>}
+                                {errors.password?.type === 'minLength' && <p className="text-red-600 text-sm">Password must be 6 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600 text-sm">Password must have one capital letter and special character.</p>}
 							</div>
 
