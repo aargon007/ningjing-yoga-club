@@ -7,17 +7,38 @@ import {
 	FaHome,
 	FaSearch,
 	FaStar,
-    FaUserAlt,
-    FaUsers,
+	FaUserAlt,
+	FaUsers,
 } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
-import { MdOutlineCastForEducation, MdOutlineDuo, MdVideoSettings } from "react-icons/md";
+import {
+	MdOutlineCastForEducation,
+	MdOutlineDuo,
+	MdVideoSettings,
+} from "react-icons/md";
+import useAuth from "../../Hooks/useAuth";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 const Dashboard = () => {
+	const { user, logOut } = useAuth();
+	const [isAdmin] = useAdmin();
+	const [isInstructor] = useInstructor();
+	const navigate = useNavigate();
 
-	
+	const handleLogOut = () => {
+		logOut()
+			.then((result) => {
+				setUser(null);
+			})
+			.catch((error) => {
+				console.log(error.message);
+			});
+		navigate("/");
+	};
+
 	return (
 		<div>
 			<div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
@@ -26,7 +47,11 @@ const Dashboard = () => {
 					<div className="flex items-center justify-start pl-5 w-14 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
 						<img
 							className="w-5 h-5 md:w-10 md:h-10 mr-2 rounded-full overflow-hidden"
-							src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"
+							src={
+								user.photoURL
+									? user.photoURL
+									: "https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"
+							}
 						/>
 						<span className="hidden md:block">Admin</span>
 					</div>
@@ -61,6 +86,7 @@ const Dashboard = () => {
 							</li>
 							<li>
 								<button
+									onClick={handleLogOut}
 									className="flex items-center mr-4 hover:text-blue-100"
 								>
 									<span className="inline-flex mr-1">
@@ -74,7 +100,8 @@ const Dashboard = () => {
 				</div>
 
 				{/* sidebar  */}
-				<div className="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
+				{/* <div className="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar"> */}
+				<div className="fixed flex flex-col top-14 left-0 w-14 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
 					<div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
 						<ul className="flex flex-col py-4 space-y-1">
 							{/* for all user  */}
@@ -116,108 +143,119 @@ const Dashboard = () => {
 							</li>
 
 							{/* students only  */}
-							<li>
-								<Link
-									to="/dashboard/selected-classes"
-									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-								>
-									<span className="inline-flex justify-center items-center ml-4">
-										<MdOutlineCastForEducation className="w-5 h-5"></MdOutlineCastForEducation>
-									</span>
-									<span className="ml-2 text-sm tracking-wide truncate">
-										My Selected Classes
-									</span>
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/dashboard/enrolled-classes"
-									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-								>
-									<span className="inline-flex justify-center items-center ml-4">
-										<FaBook className="w-5 h-5"></FaBook>
-									</span>
-									<span className="ml-2 text-sm tracking-wide truncate">
-										My Enrolled Classes
-									</span>
-									<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
-										1.2k
-									</span>
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/dashboard/pay"
-									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-								>
-									<span className="inline-flex justify-center items-center ml-4">
-										<FaCcAmazonPay className="w-5 h-5"></FaCcAmazonPay>
-									</span>
-									<span className="ml-2 text-sm tracking-wide truncate">
-										Pay
-									</span>
-								</Link>
-							</li>
+							{!isAdmin &&
+								( !isInstructor && (
+									<>
+										<li>
+											<Link
+												to="/dashboard/selected-classes"
+												className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+											>
+												<span className="inline-flex justify-center items-center ml-4">
+													<MdOutlineCastForEducation className="w-5 h-5"></MdOutlineCastForEducation>
+												</span>
+												<span className="ml-2 text-sm tracking-wide truncate">
+													My Selected Classes
+												</span>
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/dashboard/enrolled-classes"
+												className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+											>
+												<span className="inline-flex justify-center items-center ml-4">
+													<FaBook className="w-5 h-5"></FaBook>
+												</span>
+												<span className="ml-2 text-sm tracking-wide truncate">
+													My Enrolled Classes
+												</span>
+												<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+													1.2k
+												</span>
+											</Link>
+										</li>
+										<li>
+											<Link
+												to="/dashboard/pay"
+												className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+											>
+												<span className="inline-flex justify-center items-center ml-4">
+													<FaCcAmazonPay className="w-5 h-5"></FaCcAmazonPay>
+												</span>
+												<span className="ml-2 text-sm tracking-wide truncate">
+													Pay
+												</span>
+											</Link>
+										</li>
+									</>
+								))}
 
-                            {/* Instructor menu */}
-                            <li>
-								<Link
-									to="/dashboard/add-class"
-									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-								>
-									<span className="inline-flex justify-center items-center ml-4">
-										<FaFolderPlus className="w-5 h-5"></FaFolderPlus>
-									</span>
-									<span className="ml-2 text-sm tracking-wide truncate">
-										Add a Class
-									</span>
-								</Link>
-							</li>
-                            <li>
-								<Link
-									to="/dashboard/my-classes"
-									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-								>
-									<span className="inline-flex justify-center items-center ml-4">
-										<MdOutlineDuo className="w-5 h-5"></MdOutlineDuo>
-									</span>
-									<span className="ml-2 text-sm tracking-wide truncate">
-										My Classes
-									</span>
-								</Link>
-							</li>
+							{/* Instructor menu */}
+							{isInstructor && (
+								<>
+									<li>
+										<Link
+											to="/dashboard/add-class"
+											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+										>
+											<span className="inline-flex justify-center items-center ml-4">
+												<FaFolderPlus className="w-5 h-5"></FaFolderPlus>
+											</span>
+											<span className="ml-2 text-sm tracking-wide truncate">
+												Add a Class
+											</span>
+										</Link>
+									</li>
+									<li>
+										<Link
+											to="/dashboard/my-classes"
+											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+										>
+											<span className="inline-flex justify-center items-center ml-4">
+												<MdOutlineDuo className="w-5 h-5"></MdOutlineDuo>
+											</span>
+											<span className="ml-2 text-sm tracking-wide truncate">
+												My Classes
+											</span>
+										</Link>
+									</li>
+								</>
+							)}
 
+							{/* admin menu */}
+							{isAdmin && (
+								<>
+									<li>
+										<Link
+											to="/dashboard/manage-classes"
+											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+										>
+											<span className="inline-flex justify-center items-center ml-4">
+												<MdVideoSettings className="w-5 h-5"></MdVideoSettings>
+											</span>
+											<span className="ml-2 text-sm tracking-wide truncate">
+												Manage Classes
+											</span>
+										</Link>
+									</li>
+									<li>
+										<Link
+											to="/dashboard/manage-users"
+											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+										>
+											<span className="inline-flex justify-center items-center ml-4">
+												<FaUsers className="w-5 h-5"></FaUsers>
+											</span>
+											<span className="ml-2 text-sm tracking-wide truncate">
+												Manage Users
+											</span>
+										</Link>
+									</li>
+								</>
+							)}
 
-                            {/* admin menu */}
-                            <li>
-								<Link
-									to="/dashboard/manage-classes"
-									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-								>
-									<span className="inline-flex justify-center items-center ml-4">
-										<MdVideoSettings className="w-5 h-5"></MdVideoSettings>
-									</span>
-									<span className="ml-2 text-sm tracking-wide truncate">
-										Manage Classes
-									</span>
-								</Link>
-							</li>
-                            <li>
-								<Link
-									to="/dashboard/manage-users"
-									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-								>
-									<span className="inline-flex justify-center items-center ml-4">
-										<FaUsers className="w-5 h-5"></FaUsers>
-									</span>
-									<span className="ml-2 text-sm tracking-wide truncate">
-										Manage Users
-									</span>
-								</Link>
-							</li>
-
-
-                            {/* profile  */}
+							{/* profile  */}
 							<li className="px-5 hidden md:block">
 								<div className="flex flex-row items-center mt-5 h-8">
 									<div className="text-sm font-light tracking-wide text-gray-400 uppercase">
@@ -226,7 +264,8 @@ const Dashboard = () => {
 								</div>
 							</li>
 							<li>
-								<Link to='/dashboard/profile'
+								<Link
+									to="/dashboard/profile"
 									className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
 								>
 									<span className="inline-flex justify-center items-center ml-4">
@@ -247,10 +286,9 @@ const Dashboard = () => {
 					</div>
 				</div>
 
-                <div className="h-full ml-14 mt-14 mb-10 md:ml-64 px-10 py-10">
-                    <Outlet></Outlet>
-                </div>
-                
+				<div className="h-full ml-14 mt-14 mb-10 md:ml-64 px-10 py-10">
+					<Outlet></Outlet>
+				</div>
 			</div>
 		</div>
 	);
