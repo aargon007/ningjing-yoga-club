@@ -16,6 +16,8 @@ import { RxDashboard } from "react-icons/rx";
 import { MdOutlineCastForEducation, MdOutlineDuo, MdVideoSettings } from "react-icons/md";
 
 const Dashboard = () => {
+
+	
 	return (
 		<div>
 			<div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
