@@ -23,6 +23,7 @@ import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 
 const Dashboard = () => {
+
 	const { user, logOut } = useAuth();
 	const [isAdmin] = useAdmin();
 	const [isInstructor] = useInstructor();
@@ -46,19 +47,22 @@ const Dashboard = () => {
 				<div className="fixed w-full flex items-center justify-between h-14 text-white z-10">
 					<div className="flex items-center justify-start pl-5 w-14 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
 						<img
-							className="w-5 h-5 md:w-10 md:h-10 mr-2 rounded-full overflow-hidden"
+							className="w-8 h-8 md:w-10 md:h-10 mr-2 rounded-full overflow-hidden"
 							src={
 								user.photoURL
 									? user.photoURL
 									: "https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"
 							}
 						/>
-						<span className="hidden md:block">Admin</span>
+						<span className="hidden md:block">{
+							isAdmin ? 'Admin' : (isInstructor ? 'Instructor' : "Student")
+						}</span>
 					</div>
 
 					<div className="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
-						<div className="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
-							<button className="outline-none focus:outline-none">
+						<div className=" flex items-center w-full max-w-xl mr-4 p-2">
+						{/* <div className="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200"> */}
+							{/* <button className="outline-none focus:outline-none">
 								<FaSearch className="text-black"></FaSearch>
 							</button>
 							<input
@@ -67,7 +71,7 @@ const Dashboard = () => {
 								id=""
 								placeholder="Search"
 								className="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent"
-							/>
+							/> */}
 						</div>
 
 						<ul className="flex items-center">
@@ -143,8 +147,8 @@ const Dashboard = () => {
 							</li>
 
 							{/* students only  */}
-							{!isAdmin &&
-								( !isInstructor && (
+							{isAdmin === false &&
+								( isInstructor === false && (
 									<>
 										<li>
 											<Link
