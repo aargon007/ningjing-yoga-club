@@ -32,9 +32,9 @@ const Profile = () => {
 
 	const onSubmit = (data) => {
 		data.gender = selectedOption;
-		console.log(data);
+		// console.log(data);
 		axiosSecure.patch(`/users/${userProfile._id}`, data).then( res => {
-			console.log(res);
+			// console.log(res);
 			Swal.fire({
 				position: "top-end",
 				icon: "success",

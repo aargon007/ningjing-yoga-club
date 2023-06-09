@@ -145,7 +145,7 @@ const Register = () => {
 									<input
 										id="name"
 										type="text"
-										{...register("name")}
+										{...register("name", { required: true })}
 										className="inputField"
 										placeholder="Enter your name"
 									/>

@@ -3,6 +3,7 @@ import "./Dashboard.css";
 import {
 	FaBook,
 	FaCcAmazonPay,
+	FaChalkboardTeacher,
 	FaFolderPlus,
 	FaHome,
 	FaSearch,
@@ -11,7 +12,7 @@ import {
 	FaUsers,
 } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, ScrollRestoration, useNavigate } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import {
 	MdOutlineCastForEducation,
@@ -21,12 +22,14 @@ import {
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
+import useProfile from "../../Hooks/useProfile";
 
 const Dashboard = () => {
 
 	const { user, logOut } = useAuth();
 	const [isAdmin] = useAdmin();
 	const [isInstructor] = useInstructor();
+	const [userProfile] = useProfile();
 	const navigate = useNavigate();
 
 	const handleLogOut = () => {
@@ -49,8 +52,8 @@ const Dashboard = () => {
 						<img
 							className="w-8 h-8 md:w-10 md:h-10 mr-2 rounded-full overflow-hidden"
 							src={
-								user.photoURL
-									? user.photoURL
+								userProfile?.photo
+									? userProfile?.photo
 									: "https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"
 							}
 						/>
@@ -217,7 +220,7 @@ const Dashboard = () => {
 											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
 										>
 											<span className="inline-flex justify-center items-center ml-4">
-												<MdOutlineDuo className="w-5 h-5"></MdOutlineDuo>
+												<FaChalkboardTeacher className="w-5 h-5"></FaChalkboardTeacher>
 											</span>
 											<span className="ml-2 text-sm tracking-wide truncate">
 												My Classes
@@ -290,8 +293,9 @@ const Dashboard = () => {
 					</div>
 				</div>
 
-				<div className="h-full ml-14 mt-14 mb-10 md:ml-64 px-10 py-10">
+				<div className="h-full ml-10 mt-10 mb-10 md:ml-64 px-10 py-10">
 					<Outlet></Outlet>
+					<ScrollRestoration></ScrollRestoration>
 				</div>
 			</div>
 		</div>
