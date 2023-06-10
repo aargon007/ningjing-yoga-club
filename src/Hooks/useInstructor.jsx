@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from './useAuth';
 import useAxiosGlobal from './useAxiosGlobal';
 
+//check if user is an instructor or not
 const useInstructor = () => {
     const {user, loading} = useAuth();
     const [axiosSecure] = useAxiosGlobal();

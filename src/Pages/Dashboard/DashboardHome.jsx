@@ -11,7 +11,7 @@ const DashboardHome = () => {
 
     return (
         <div>
-            {(isAdminLoading || isInstructor) && <Spinner></Spinner>}
+            {(isAdminLoading || isInstructorLoading) && <Spinner></Spinner>}
             {isAdmin && <AdminHome></AdminHome>}
             {isInstructor && <InstructorHome></InstructorHome>}
         </div>

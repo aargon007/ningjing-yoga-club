@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosGlobal from './useAxiosGlobal';
 import { useQuery } from '@tanstack/react-query';
 
+//fetch data for admin
 const useUsers = () => {
     
     const [axiosSecure] = useAxiosGlobal();

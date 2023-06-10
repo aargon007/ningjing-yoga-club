@@ -22,6 +22,7 @@ const AdminHome = () => {
 
 	return (
 		<div>
+			<h1 className="text-center text-2xl font-semibold">Welcome to Admin Dashboard</h1>
 			<div className="mt-5 lg:mt-10">
 				<div className="flex flex-wrap -mx-6">
 					<div className="w-full px-6 sm:w-1/2 xl:w-1/3">

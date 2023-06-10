@@ -1,11 +1,11 @@
 import React from "react";
-import useProfile from "../../../Hooks/useProfile";
-import { useForm } from "react-hook-form";
 import useAxiosGlobal from "../../../Hooks/useAxiosGlobal";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const AddClass = () => {
-	const [userProfile] = useProfile();
+const UpdateClassInfo = ({ isOpen, onClose, modalClass, refetch }) => {
+	if (!isOpen) return null;
+
 	const [axiosSecure] = useAxiosGlobal();
 	const {
 		register,
@@ -16,36 +16,45 @@ const AddClass = () => {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		data.status = "pending";
-		data.price = parseFloat(data.price);
+        data.price = parseFloat(data.price);
 		data.seats = parseFloat(data.seats);
-		(data.enrolled = 0), (data.feedback = "");
-
-		axiosSecure.post("/classes", data).then((res) => {
-			reset();
-			console.log(res);
-            Swal.fire({
-				position: "top-end",
-				icon: "success",
-				title: "Class added successfully.",
-				showConfirmButton: false,
-				timer: 1500,
+		axiosSecure
+			.patch(`/classes/instructor/${modalClass._id}`, data)
+			.then((res) => {
+				if (res.data.modifiedCount > 0) {
+					Swal.fire({
+						position: "top-end",
+						icon: "success",
+						title: "Feedback Done!",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+					onClose();
+                    refetch()
+				}
 			});
-		});
-		
+		// console.log(data);
 	};
 
 	return (
-		<div>
-			<h1 className="text-center text-2xl font-semibold">
-				Welcome! Add a Class
-			</h1>
-			<div className="flex items-center justify-center lg:p-12 pt-5">
-				<div className="mx-auto w-full bg-white">
-					<form
-						className="grid lg:grid-cols-2 gap-5"
-						onSubmit={handleSubmit(onSubmit)}
-					>
+		<div
+			className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-80"
+			id={`${modalClass?._id}`}
+		>
+			<div className="bg-white m-5 rounded-lg p-8 relative">
+				<button
+					onClick={onClose}
+					className="absolute top-0 right-0 bg-red-500 text-white px-3 py-2 rounded-full"
+				>
+					X
+				</button>
+				{/* Modal content */}
+				<div className="max-w-xl mx-auto flex w-full flex-col border rounded-lg bg-white p-5">
+					<h2 className="title-font mb-1 text-lg font-medium text-gray-900">
+						Update Data for : {modalClass?.name}
+					</h2>
+
+					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="mb-3">
 							<label
 								htmlFor="name"
@@ -56,6 +65,7 @@ const AddClass = () => {
 							<input
 								type="text"
 								{...register("name", { required: true })}
+                                defaultValue={modalClass?.name}
 								id="name"
 								placeholder="Class Name"
 								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -72,46 +82,12 @@ const AddClass = () => {
 							<input
 								type="text"
 								{...register("image", { required: true })}
+                                defaultValue={modalClass?.image}
 								id="image"
 								placeholder="Enter Image URL"
 								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
-
-						<div className="mb-3">
-							<label
-								htmlFor="instructor"
-								className="mb-3 block text-base font-medium text-[#07074D]"
-							>
-								Instructor Name
-							</label>
-							<input
-								type="text"
-								{...register("instructor", { required: true })}
-								value={userProfile?.name}
-								id="instructor"
-								placeholder="Instructor Name"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-							/>
-						</div>
-
-						<div className="mb-3">
-							<label
-								htmlFor="email"
-								className="mb-3 block text-base font-medium text-[#07074D]"
-							>
-								Email Address
-							</label>
-							<input
-								type="email"
-								{...register("email", { required: true })}
-								value={userProfile?.email}
-								id="email"
-								placeholder="example@domain.com"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-							/>
-						</div>
-
 						<div className="mb-3">
 							<label
 								htmlFor="seats"
@@ -122,6 +98,7 @@ const AddClass = () => {
 							<input
 								type="text"
 								{...register("seats", { required: true })}
+                                defaultValue={modalClass?.seats}
 								id="seats"
 								placeholder="Available seats"
 								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -138,20 +115,19 @@ const AddClass = () => {
 							<input
 								type="number"
 								{...register("price", { required: true })}
+                                defaultValue={modalClass?.price}
 								id="price"
 								placeholder="Price"
 								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
 
-						<div className="lg:col-span-2">
-							<button
-								type="submit"
-								className="w-full hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
-							>
-								Add Class
-							</button>
-						</div>
+						<button
+							type="submit"
+							className="rounded border-0 bg-indigo-500 py-2 px-6 text-lg text-white hover:bg-indigo-600 focus:outline-none"
+						>
+							Send
+						</button>
 					</form>
 				</div>
 			</div>
@@ -159,4 +135,4 @@ const AddClass = () => {
 	);
 };
 
-export default AddClass;
+export default UpdateClassInfo;

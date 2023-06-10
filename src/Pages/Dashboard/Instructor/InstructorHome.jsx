@@ -55,7 +55,7 @@ const InstructorHome = () => {
 								className="block mx-auto"
 							/>
 							<div>
-								<p className="pt-4 text-sm font-medium lg:text-lg md:text-base md:pt-6">
+								<p className="pt-4 text-sm font-medium lg:text-lg md:text-base md:pt-6 text-gray-700">
 									Profile
 								</p>
 							</div>
@@ -72,7 +72,7 @@ const InstructorHome = () => {
 								className="block mx-auto"
 							/>
 							<div>
-								<p className="pt-4 text-sm font-medium lg:text-lg md:text-base md:pt-6">
+								<p className="pt-4 text-sm font-medium lg:text-lg md:text-base md:pt-6 text-gray-700">
 									Add Class
 								</p>
 							</div>
@@ -89,7 +89,7 @@ const InstructorHome = () => {
 								className="block mx-auto"
 							/>
 							<div>
-								<p className="pt-4 text-sm font-medium lg:text-lg md:text-base md:pt-6">
+								<p className="pt-4 text-sm font-medium lg:text-lg md:text-base md:pt-6 text-gray-800">
 									My Classes
 								</p>
 							</div>

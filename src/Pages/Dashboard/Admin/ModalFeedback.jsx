@@ -54,13 +54,13 @@ const ModalFeedback = ({ isOpen, onClose, modalClass }) => {
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="mb-4">
 							<label
-								htmlFor="message"
+								htmlFor={`${modalClass?._id}`}
 								className="text-sm leading-7 text-gray-600"
 							>
 								Message
 							</label>
 							<textarea
-								id="message"
+								id={`${modalClass?._id}`}
 								{...register("feedback")}
 								className="h-32 w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
 							></textarea>

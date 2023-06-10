@@ -3,6 +3,7 @@ import useAuth from './useAuth';
 import useAxiosGlobal from './useAxiosGlobal';
 import { useQuery } from '@tanstack/react-query';
 
+//fetch data for user profile
 const useProfile = () => {
     const { user, loading } = useAuth();
     

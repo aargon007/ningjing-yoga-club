@@ -104,7 +104,7 @@ const ManageClasses = () => {
 								<span className="lg:hidden  px-2 py-1  font-bold">
 									Status :{" "}
 								</span>
-								{yogaClass?.status}
+								<span className={`${yogaClass?.status === "approved" ? "text-green-600" : "text-red-600"}`}>{yogaClass?.status}</span>
 							</td>
 
 							<td className="tabletd border-b-0 lg:border-b border-t-0 lg:border-t">
@@ -139,6 +139,7 @@ const ManageClasses = () => {
 									Actions :{" "}
 								</span>
 								<button
+								id={yogaClass?._id}
 									className="lg:text-base text-white px-3 py-1 bg-gray-700 rounded-md"
 									onClick={() => {
 										openModal(yogaClass);

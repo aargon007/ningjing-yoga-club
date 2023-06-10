@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
+//fetch data for all classes data -- admin
 const UseClasses = () => {
 
     const { refetch, data: classes = [], isLoading: loading } = useQuery({

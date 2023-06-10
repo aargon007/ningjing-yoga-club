@@ -72,10 +72,10 @@ const ManageUsers = () => {
 								</span>
 								<button
 									onClick={() => handleChangeRole("admin", user?._id)}
-									className={`text-sm lg:text-base rounded bg-blue-500 ${
+									className={`text-sm lg:text-base rounded bg-blue-600 ${
 										user?.role === "admin"
-											? "bg-opacity-50"
-											: "hover:bg-blue-700"
+											? "bg-opacity-30"
+											: "hover:bg-blue-800"
 									} text-white py-1 px-3 me-3`}
 									disabled={user?.role === "admin"}
 								>
@@ -83,10 +83,10 @@ const ManageUsers = () => {
 								</button>
 								<button
 									onClick={() => handleChangeRole("instructor", user?._id)}
-									className={`text-sm lg:text-base rounded bg-gray-500 ${
+									className={`text-sm lg:text-base rounded bg-amber-500 ${
 										user?.role === "instructor"
-											? "bg-opacity-50"
-											: "hover:bg-gray-700"
+											? "bg-opacity-30"
+											: "hover:bg-amber-700"
 									} text-white py-1 px-3`}
 									disabled={user?.role === "instructor"}
 								>
