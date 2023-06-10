@@ -17,6 +17,6 @@
         @apply p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell
     }
     .tabletd {
-        @apply w-full lg:w-auto p-3 text-gray-800  lg:text-center border block lg:table-cell relative lg:static
+        @apply w-full lg:w-auto p-3 text-gray-800 text-sm lg:text-base border flex items-center lg:table-cell lg:static
     }
 }

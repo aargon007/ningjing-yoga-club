@@ -22,7 +22,7 @@ const AdminHome = () => {
 
 	return (
 		<div>
-			<div className="m-6">
+			<div className="mt-5 lg:mt-10">
 				<div className="flex flex-wrap -mx-6">
 					<div className="w-full px-6 sm:w-1/2 xl:w-1/3">
 						<div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-slate-100">
@@ -65,15 +65,15 @@ const AdminHome = () => {
 				</div>
 			</div>
 
-			<div className="grid gap-8 md:grid-cols-2 lg:gap-12 p-6 md:p-10 mt-12">
+			<div className="grid gap-8 md:grid-cols-2 lg:gap-12 mt-12">
 				<Link to='/dashboard/manage-classes'
-					className="flex flex-col p-6 space-y-6 transition-all duration-500 bg-white border border-indigo-100 rounded-lg shadow hover:shadow-xl lg:p-8 lg:flex-row lg:space-y-0 lg:space-x-6"
+					className="flex flex-col p-6 space-y-2 transition-all duration-500 bg-white border border-indigo-100 rounded-lg shadow hover:shadow-xl lg:p-8 lg:flex-row lg:space-y-0 lg:space-x-6"
 				>
 					<div className="flex items-center justify-center w-16 h-16 bg-green-100 border border-green-200 rounded-full shadow-inner lg:h-20 lg:w-20">
                         <HiOutlineLightBulb className="w-10 h-10 text-green-500"></HiOutlineLightBulb>
 					</div>
 					<div className="flex-1">
-						<h5 className="mb-3 text-xl font-bold lg:text-2xl">Manage Classes</h5>
+						<h5 className="mb-3 text-xl font-bold lg:text-2xl text-gray-700">Manage Classes</h5>
 						<p className="mb-6 text-lg text-gray-600">
 							Find out what classes is posted
 						</p>
@@ -85,13 +85,13 @@ const AdminHome = () => {
 					</div>
 				</Link>
 				<Link to='/dashboard/manage-users'
-					className="flex flex-col p-6 space-y-6 transition-all duration-500 bg-white border border-indigo-100 rounded-lg shadow hover:shadow-xl lg:p-8 lg:flex-row lg:space-y-0 lg:space-x-6"
+					className="flex flex-col p-6 space-y-2 transition-all duration-500 bg-white border border-indigo-100 rounded-lg shadow hover:shadow-xl lg:p-8 lg:flex-row lg:space-y-0 lg:space-x-6"
 				>
 					<div className="flex items-center justify-center w-16 h-16 bg-green-100 border border-green-200 rounded-full shadow-inner lg:h-20 lg:w-20">
 						<FaUsers className="w-10 h-10 text-green-500"></FaUsers>
 					</div>
 					<div className="flex-1">
-						<h5 className="mb-3 text-xl font-bold lg:text-2xl">Manage Users</h5>
+						<h5 className="mb-3 text-xl font-bold lg:text-2xl text-gray-700">Manage Users</h5>
 						<p className="mb-6 text-lg text-gray-600">
 							Find out what user role is currently on
 						</p>

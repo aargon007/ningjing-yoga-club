@@ -27,7 +27,7 @@ const ManageUsers = () => {
 	return (
 		<>
 			<div>
-				<h1 className="text-center text-3xl font-semibold text-blue-900 mb-3">
+				<h1 className="text-center text-3xl font-semibold text-blue-900 dark:text-white mb-3">
 					Total Users : {users.length}
 				</h1>
 			</div>
@@ -41,9 +41,8 @@ const ManageUsers = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{!users && <Spinner></Spinner>}
 
-					{users.map((user) => (
+					{users?.map((user) => (
 						<tr
 							key={user._id}
 							className="bg-white  flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-5 lg:mb-0"
@@ -61,13 +60,13 @@ const ManageUsers = () => {
 								{user?.email}
 							</td>
 
-							<td className="tabletd border-t-0 lg:border-t border-b-0 lg:border-b">
+							<td className="tabletd border-t-0 lg:border-t border-b-0 lg:border-b lg:text-center">
 								<span className="lg:hidden  px-2 py-1 text-sm font-bold">
 									Role :{" "}
 								</span>
 								{user?.role}
 							</td>
-							<td className="tabletd border-b border-t-0 lg:border-t">
+							<td className="tabletd border-b border-t-0 lg:border-t lg:text-center">
 								<span className="lg:hidden px-2 py-1 text-sm font-bold">
 									Actions :{" "}
 								</span>
