@@ -3,6 +3,7 @@ import useSelectedClass from "../../../Hooks/Student/useSelectedClass";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import useAxiosGlobal from "../../../Hooks/useAxiosGlobal";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
 	const [selectedClasses, refetch, isSelectedClasses] = useSelectedClass();
@@ -58,9 +59,9 @@ const SelectedClass = () => {
 								<p></p>
 								<div className="flex items-center gap-10">
 									<p className="font-bold text-lg">${selectCls?.price}</p>
-									<button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+									<Link to={`/dashboard/payment/${selectCls?._id}`}><button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
 										Pay
-									</button>
+									</button></Link>
 								</div>
 							</div>
 						</div>
