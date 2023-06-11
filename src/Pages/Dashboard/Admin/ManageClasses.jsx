@@ -28,7 +28,7 @@ const ManageClasses = () => {
 				Swal.fire({
 					position: "top-end",
 					icon: "success",
-					title: "class status updated",
+					title: `class status ${status}`,
 					showConfirmButton: false,
 					timer: 1500,
 				});
@@ -39,7 +39,7 @@ const ManageClasses = () => {
 	return (
 		<div>
 			<h1 className="text-center text-2xl font-semibold mb-4">
-				Manage Classes
+				Manage Classes : {classes.length}
 			</h1>
 
 			<table className="border-collapse w-full">
@@ -67,7 +67,7 @@ const ManageClasses = () => {
 								</span>
 								<span className="inline-flex gap-3 items-center">
 									<img
-										src={yogaClass.image}
+										src={yogaClass?.image}
 										className="h-5 w-5 rounded-full"
 										loading="lazy"
 										alt=""

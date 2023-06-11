@@ -25,7 +25,7 @@ const UpdateClassInfo = ({ isOpen, onClose, modalClass, refetch }) => {
 					Swal.fire({
 						position: "top-end",
 						icon: "success",
-						title: "Feedback Done!",
+						title: "Info Updated successfully!",
 						showConfirmButton: false,
 						timer: 1500,
 					});

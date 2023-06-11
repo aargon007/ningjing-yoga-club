@@ -1,7 +1,7 @@
 import React from 'react';
 import useAuth from '../Hooks/useAuth';
 import useInstructor from '../Hooks/useInstructor';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import Spinner from '../Pages/Shared/Spinner';
 
 const InstructorRoute = ({children}) => {

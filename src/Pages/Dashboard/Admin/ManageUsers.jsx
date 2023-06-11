@@ -41,7 +41,6 @@ const ManageUsers = () => {
 					</tr>
 				</thead>
 				<tbody>
-
 					{users?.map((user) => (
 						<tr
 							key={user._id}
@@ -51,7 +50,15 @@ const ManageUsers = () => {
 								<span className="lg:hidden px-2 py-1 font-bold text-sm">
 									Name :{" "}
 								</span>
-								{user?.name}
+								<span className="inline-flex gap-3 items-center">
+									<img
+										src={user?.photo}
+										className="h-5 w-5 rounded-full"
+										loading="lazy"
+										alt=""
+									/>
+									{user?.name}
+								</span>
 							</td>
 							<td className="tabletd border-t-0 lg:border-t border-b-0 lg:border-b">
 								<span className="lg:hidden px-2 py-1 font-bold text-sm">
