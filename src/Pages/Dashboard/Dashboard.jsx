@@ -23,6 +23,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import useProfile from "../../Hooks/useProfile";
+import useSelectedClass from "../../Hooks/Student/useSelectedClass";
 
 const Dashboard = () => {
 
@@ -30,6 +31,7 @@ const Dashboard = () => {
 	const [isAdmin] = useAdmin();
 	const [isInstructor] = useInstructor();
 	const [userProfile] = useProfile();
+	const [selectedClasses] = useSelectedClass()
 	const navigate = useNavigate();
 
 	const handleLogOut = () => {
@@ -163,6 +165,9 @@ const Dashboard = () => {
 												</span>
 												<span className="ml-2 text-sm tracking-wide truncate">
 													My Selected Classes
+												</span>
+												<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+													{selectedClasses?.length}
 												</span>
 											</Link>
 										</li>

@@ -37,6 +37,7 @@ const PublicClassNclassNamees = () => {
 				price: data?.price,
 				isPaid: false,
 				studentEmail: user?.email,
+				image : data?.image
 			};
 			// console.log(sendingData);
 			axiosSecure.post("/selectedClasses", sendingData).then((res) => {
