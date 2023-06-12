@@ -3,20 +3,20 @@ import {
 	FaAward,
 	FaEye,
 	FaFire,
-	FaFireAlt,
 	FaPeopleArrows,
 	FaRegHeart,
 } from "react-icons/fa";
 import { IoIosWater } from "react-icons/io";
+import { motion } from "framer-motion"
 
 const Benefits = () => {
 	return (
 		<div>
-			<h1 className="text-center text-5xl font-thin text-[#c9638e]">
+			<h1 className="text-center text-3xl md:text-4xl lg:text-5xl font-thin text-[#c9638e]">
 				Benefits Of Yoga
 			</h1>
-			<p className="text-center text-blue-600 text-4xl">~</p>
-			<p className="text-center text-gray-700 dark:text-gray-100 text-xl leading-8">
+			<p className="text-center text-blue-600 text-2xl lg:text-4xl">~</p>
+			<p className="text-center text-gray-700 dark:text-gray-100 lg:text-xl leading-8">
 				Yoga Fit is where you can find balance, harmony and energy renewal
 				amidst the hectic bustle of everyday pressures and deadlines. Relax &
 				enjoy a personalized day yoga experience in our comfortable sanctuary.
@@ -43,7 +43,7 @@ const Benefits = () => {
 					<div className="flex gap-4 items-center">
 						<div>
 							<h1 className="text-2xl text-right text-gray-700 dark:text-gray-100">
-								helps with back pain relief
+								Helps with back pain relief
 							</h1>
 							<p className="text-right text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
 								Yoga is as good as basic stretching for easing pain and
@@ -59,7 +59,7 @@ const Benefits = () => {
 					<div className="flex gap-4 items-center">
 						<div>
 							<h1 className="text-2xl text-right text-gray-700 dark:text-gray-100">
-								ease arthritis symptoms
+								Ease arthritis symptoms
 							</h1>
 							<p className="text-right text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
 								Gentle yoga has been shown to ease some of the discomfort of
@@ -86,10 +86,10 @@ const Benefits = () => {
 					<div className="flex flex-row-reverse items-center gap-4">
 						<div>
 							<h1 className="text-2xl text-left text-[#3a4259] dark:text-gray-100">
-								relaxes you, to help you sleep better
+								Relaxes you, to help you sleep better
 							</h1>
 							<p className="text-left text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
-								a consistent bedtime yoga routine can help you get in the right
+								A consistent bedtime yoga routine can help you get in the right
 								mindset and prepare your body to fall asleep and stay asleep.
 							</p>
 						</div>
@@ -102,10 +102,10 @@ const Benefits = () => {
 					<div className="flex gap-4 flex-row-reverse items-center">
 						<div>
 							<h1 className="text-2xl text-left text-gray-700 dark:text-gray-100">
-								helps you manage stress
+								Helps you manage stress
 							</h1>
 							<p className="text-left text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
-								yoga supports stress management, mental health, mindfulness,
+								Yoga supports stress management, mental health, mindfulness,
 								healthy eating, weight loss and quality sleep.
 							</p>
 						</div>
@@ -118,7 +118,7 @@ const Benefits = () => {
 					<div className="flex gap-4 flex-row-reverse items-center ">
 						<div>
 							<h1 className="text-2xl text-left text-gray-700 dark:text-gray-100">
-								connects you with a supportive community
+								Connects you with a supportive community
 							</h1>
 							<p className="text-left text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
 								Participating in yoga classes can ease loneliness and provide an

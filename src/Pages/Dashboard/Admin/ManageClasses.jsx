@@ -113,7 +113,7 @@ const ManageClasses = () => {
 								</span>
 								<button
                                     onClick={() => handleChangeStatus("approved", yogaClass?._id)}
-									className={` lg:text-base rounded bg-blue-500 ${
+									className={` text-sm lg:block lg:mb-2 rounded bg-blue-500 ${
 										yogaClass?.status === "approved" || yogaClass?.status === "denied"
 											? "bg-opacity-50"
 											: "hover:bg-blue-700"
@@ -124,7 +124,7 @@ const ManageClasses = () => {
 								</button>
 								<button
                                     onClick={() => handleChangeStatus("denied", yogaClass?._id)}
-									className={` lg:text-base rounded bg-red-500 ${
+									className={`text-sm rounded bg-red-500 ${
 										yogaClass?.status === "denied" || yogaClass?.status === "approved"
 											? "bg-opacity-50"
 											: "hover:bg-red-700"
@@ -140,12 +140,12 @@ const ManageClasses = () => {
 								</span>
 								<button
 								id={yogaClass?._id}
-									className="lg:text-base text-white px-3 py-1 bg-gray-700 rounded-md"
+									className="text-sm text-white px-3 py-1 bg-gray-700 rounded-md"
 									onClick={() => {
 										openModal(yogaClass);
 									}}
 								>
-									Give feedback
+									send feedback
 								</button>
 
 								<ModalFeedback

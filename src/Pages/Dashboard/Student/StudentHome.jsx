@@ -18,7 +18,7 @@ const StudentHome = () => {
 				</div>
 				<div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
 					<img
-						className="object-cover  h-32"
+						className="object-cover  h-40"
 						src={userProfile?.photo}
 						alt="user"
 					/>

@@ -6,13 +6,21 @@ import Swal from "sweetalert2";
 import useAxiosGlobal from "../../Hooks/useAxiosGlobal";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../Pages/Shared/Spinner"
-import useProfile from "../../Hooks/useProfile";
 
 const PublicClassNclassNamees = () => {
 	const [clsLoading, setClsLoading] = useState(false);
+	const [isAdOrisIns, setisAdOrisIns] = useState({})
 	const { user } = useAuth();
 	const [axiosSecure] = useAxiosGlobal();
 	
+	useEffect( () => {
+		if(user) {
+			axiosSecure(`/users/${user?.email}`).then(res => {
+				setisAdOrisIns(res.data)
+				// console.log(res.data);
+			})
+		}
+	}, [user])
 
 	const { data: allClasses = [], isLoading: isclsLoading } = useQuery({
         queryKey: ['allClasses'],
@@ -22,12 +30,6 @@ const PublicClassNclassNamees = () => {
             return res.data;
         },
     })
-
-	// useEffect(() => {
-	// 	if(user){
-	// 		const [userProfile] = useProfile();
-	// 	}
-	// }, [user]);
 
 	const handleSelect = (data) => {
 		if (!user) {
@@ -40,7 +42,7 @@ const PublicClassNclassNamees = () => {
 			});
 			return;
 		}
-		if(userProfile?.role === "admin" || userProfile?.role === "instructor"){
+		if(isAdOrisIns?.role === "admin" || isAdOrisIns?.role === "instructor"){
 			return
 		}
 		if (user) {

@@ -80,9 +80,9 @@ const SliderSection = () => {
 				{swiperData.map((item) => (
 					<SwiperSlide key={item.text}>
 						<div className="lg:px-28 py-10 h-[400px] space-y-5 flex flex-col justify-center">
-							<h1 className="text-4xl font-semibold text-gray-100 dark:text-gray-100">{item.text}</h1>
-							<p className="border-l-4 border-yellow-300 ps-2">{item.information}</p>
-							<blockquote>{item.message}</blockquote>
+							<h1 className="lg:text-4xl text-xl font-semibold text-gray-100 dark:text-gray-100">{item.text}</h1>
+							<p className="border-l-4 text-sm lg:text-base border-yellow-300 ps-2">{item.information}</p>
+							<blockquote className="text-sm lg:text-base">{item.message}</blockquote>
 						</div>
 					</SwiperSlide>
 				))}

@@ -9,11 +9,11 @@ const Banner = ({ img, title }) => {
 			bgImageAlt="cover"
 			bgClassName="object-cover"
 			strength={-200}
-            className="rounded-md object-cover"
+            className="rounded-md"
 		>
 			<div className="h-[350px] flex flex-col justify-center items-center px-5">
-				<h1 className="mb-5 lg:mb-10 text-5xl font-bold text-white">{title}</h1>
-				<p className="mb-5 text-xl text-white">
+				<h1 className="mb-5 lg:mb-10 text-3xl lg:text-5xl font-bold text-white">{title}</h1>
+				<p className="mb-5 lg:text-xl text-white">
 					"True yoga is not about the shape of your body, but the shape of your
 					life"
 				</p>

@@ -38,7 +38,7 @@ const NavBar = () => {
 						<button
 							onClick={toggleTheme}
 							aria-hidden="true"
-							className="group p-2 transition-colors duration-200 rounded-full shadow bg-blue-200 hover:bg-blue-300 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none"
+							className=" group p-2 transition-colors duration-200 rounded-full shadow bg-blue-200 hover:bg-blue-300 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none"
 						>
 							{/* <FaStar className="fill-current text-gray-700 group-hover:text-gray-500 group-focus:text-gray-700 dark:text-gray-700 dark:group-hover:text-gray-500 dark:group-focus:text-gray-700"></FaStar> */}
 							{isDarkMode ? <HiOutlineSun /> : <MdDarkMode />}
@@ -50,7 +50,8 @@ const NavBar = () => {
 						</div>
 
 						{user && (
-							<Link to='/dashboard/profile'
+							<Link
+								to="/dashboard/profile"
 								className="lg:flex hidden justify-center items-center gap-2 py-1 px-2 rounded-lg"
 								title={user?.displayName}
 							>

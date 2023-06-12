@@ -34,7 +34,7 @@ const PopularInstructor = () => {
 				{popInstructor?.slice(0,6).map((instructor, index) => (
 					<div
 						key={instructor?._id}
-						className="flex justify-between flex-col rounded-md shadow-md bg-gray-100"
+						className="flex justify-between flex-col rounded-md shadow-md dark:bg-gray-700 bg-gray-100"
 					>
 						<img
 							src={instructor?.photo}
@@ -42,11 +42,11 @@ const PopularInstructor = () => {
 							alt=""
 						/>
 						<div className="w-full space-y-3 py-5 text-center">
-							<h1 className="text-xl text-gray-700 font-medium tracking-wider">
+							<h1 className="text-xl text-gray-700 dark:text-gray-100 font-medium tracking-wider">
 								{instructor?.name}
 							</h1>
 							<h3 className="text-amber-600">Yoga Instructor</h3>
-							<p>{instructor?.address}</p>
+							<p className="dark:text-gray-100">{instructor?.address}</p>
 							<div className="flex gap-4 text-amber-600 text-xl justify-center">
 								<FaFacebook></FaFacebook>
 								<FaInstagram></FaInstagram>

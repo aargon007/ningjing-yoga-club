@@ -14,12 +14,7 @@ const Instructors = () => {
             return res.data;
         },
     })
-	// useEffect(() => {
-	// 	axios.get("https://breakable-baseball-production.up.railway.app/allInstructors").then((res) => {
-	// 		console.log(res.data);
-	// 		setAllInstructor(res.data);
-	// 	});
-	// }, []);
+	
 
 	return (
 		<>
