@@ -1,5 +1,12 @@
 import React from "react";
-import { FaAward, FaEye, FaFire, FaFireAlt, FaPeopleArrows, FaRegHeart } from "react-icons/fa";
+import {
+	FaAward,
+	FaEye,
+	FaFire,
+	FaFireAlt,
+	FaPeopleArrows,
+	FaRegHeart,
+} from "react-icons/fa";
 import { IoIosWater } from "react-icons/io";
 
 const Benefits = () => {
@@ -70,7 +77,7 @@ const Benefits = () => {
 				<div className="w-full">
 					<img
 						src="https://i.ibb.co/LrsPY9B/shiva-6-removebg-preview.png"
-						className="h-[500px]"
+						className="h-[500px] mx-auto"
 						alt=""
 					/>
 				</div>
@@ -79,11 +86,11 @@ const Benefits = () => {
 					<div className="flex flex-row-reverse items-center gap-4">
 						<div>
 							<h1 className="text-2xl text-left text-[#3a4259] dark:text-gray-100">
-								Improves strength, balance and flexibility
+								relaxes you, to help you sleep better
 							</h1>
 							<p className="text-left text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
-								Slow movements and deep breathing increase blood flow and warm
-								up muscles, while holding a pose can build strength.
+								a consistent bedtime yoga routine can help you get in the right
+								mindset and prepare your body to fall asleep and stay asleep.
 							</p>
 						</div>
 						<div className="">
@@ -95,11 +102,11 @@ const Benefits = () => {
 					<div className="flex gap-4 flex-row-reverse items-center">
 						<div>
 							<h1 className="text-2xl text-left text-gray-700 dark:text-gray-100">
-								Balance Body & Mind
+								helps you manage stress
 							</h1>
 							<p className="text-left text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
-								Slow movements and deep breathing increase blood flow and warm
-								up muscles, while holding a pose can build strength.
+								yoga supports stress management, mental health, mindfulness,
+								healthy eating, weight loss and quality sleep.
 							</p>
 						</div>
 						<div className="">
@@ -111,11 +118,11 @@ const Benefits = () => {
 					<div className="flex gap-4 flex-row-reverse items-center ">
 						<div>
 							<h1 className="text-2xl text-left text-gray-700 dark:text-gray-100">
-								Balance Body & Mind
+								connects you with a supportive community
 							</h1>
 							<p className="text-left text-xs mt-1 text-gray-700 dark:text-gray-100 font-medium">
-								Slow movements and deep breathing increase blood flow and warm
-								up muscles, while holding a pose can build strength.
+								Participating in yoga classes can ease loneliness and provide an
+								environment for group healing and suppor
 							</p>
 						</div>
 						<div className="">
