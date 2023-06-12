@@ -4,10 +4,22 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import useAxiosGlobal from "../../../Hooks/useAxiosGlobal";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import Spinner from "../../Shared/Spinner";
 
 const SelectedClass = () => {
 	const [selectedClasses, refetch, isSelectedClasses] = useSelectedClass();
 	const [axiosSecure] = useAxiosGlobal();
+
+	const pubDate = (givendate) => {
+		const date = new Date(givendate);
+
+		const day = date.getDate();
+		const month = date.toLocaleString("default", { month: "long" });
+		const year = date.getFullYear();
+
+		const formattedTime = `${day} ${month} ${year}`;
+		return formattedTime;
+	};
 
 	const handleDeleteClass = (id) => {
 		Swal.fire({
@@ -36,6 +48,7 @@ const SelectedClass = () => {
 			<h1 className="text-2xl font-semibold text-center mb-5">
 				Your Selected Classes
 			</h1>
+			{isSelectedClasses && <Spinner></Spinner>}
 			<div className="grid lg:grid-cols-2 gap-10">
 				{selectedClasses?.map((selectCls) => (
 					<div
@@ -54,7 +67,7 @@ const SelectedClass = () => {
 								{selectCls?.name}
 							</h1>
 							<h3>Instructor : {selectCls?.instructor}</h3>
-							<p>Selects on : {selectCls?.createdAt}</p>
+							<p>Selects on : {pubDate(selectCls?.createdAt)}</p>
 							<div className="flex justify-between">
 								<p></p>
 								<div className="flex items-center gap-10">

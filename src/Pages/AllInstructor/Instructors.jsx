@@ -7,7 +7,7 @@ const Instructors = () => {
 	const [allInstructor, setAllInstructor] = useState([]);
 
 	useEffect(() => {
-		axios.get("http://localhost:5000/allInstructors").then((res) => {
+		axios.get("https://breakable-baseball-production.up.railway.app/allInstructors").then((res) => {
 			console.log(res.data);
 			setAllInstructor(res.data);
 		});

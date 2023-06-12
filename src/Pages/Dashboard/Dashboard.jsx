@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
 import {
 	FaBook,
@@ -11,10 +11,11 @@ import {
 	FaUserAlt,
 	FaUsers,
 } from "react-icons/fa";
-import { HiOutlineLogout } from "react-icons/hi";
+import { HiOutlineLogout, HiOutlineSun } from "react-icons/hi";
 import { Link, Outlet, ScrollRestoration, useNavigate } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import {
+	MdDarkMode,
 	MdOutlineCastForEducation,
 	MdOutlineDuo,
 	MdVideoSettings,
@@ -24,14 +25,17 @@ import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import useProfile from "../../Hooks/useProfile";
 import useSelectedClass from "../../Hooks/Student/useSelectedClass";
+import useEnrolledClass from "../../Hooks/Student/useEnrolledClass";
+import useDarkMode from "../../Hooks/DarkMode/useDarkMode";
 
 const Dashboard = () => {
-
 	const { user, logOut } = useAuth();
 	const [isAdmin] = useAdmin();
 	const [isInstructor] = useInstructor();
 	const [userProfile] = useProfile();
-	const [selectedClasses] = useSelectedClass()
+	const [selectedClasses] = useSelectedClass();
+	const [enrolledClasses] = useEnrolledClass();
+	const [isDarkMode, setIsDarkMode, toggleTheme] = useDarkMode();
 	const navigate = useNavigate();
 
 	const handleLogOut = () => {
@@ -59,14 +63,14 @@ const Dashboard = () => {
 									: "https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"
 							}
 						/>
-						<span className="hidden md:block">{
-							isAdmin ? 'Admin' : (isInstructor ? 'Instructor' : "Student")
-						}</span>
+						<span className="hidden md:block">
+							{isAdmin ? "Admin" : isInstructor ? "Instructor" : "Student"}
+						</span>
 					</div>
 
 					<div className="flex justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
 						<div className=" flex items-center w-full max-w-xl mr-4 p-2">
-						{/* <div className="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200"> */}
+							{/* <div className="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200"> */}
 							{/* <button className="outline-none focus:outline-none">
 								<FaSearch className="text-black"></FaSearch>
 							</button>
@@ -82,17 +86,19 @@ const Dashboard = () => {
 						<ul className="flex items-center">
 							<li>
 								<button
+									onClick={toggleTheme}
 									aria-hidden="true"
-									// @click="toggleTheme"
-									className="group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-200 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none"
+									className="group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-100 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none"
 								>
-									<FaStar className="fill-current text-gray-700 group-hover:text-gray-500 group-focus:text-gray-700 dark:text-gray-700 dark:group-hover:text-gray-500 dark:group-focus:text-gray-700"></FaStar>
-									{/* dark mode togle icon  */}
+									{/* <FaStar className="fill-current text-gray-700 group-hover:text-gray-500 group-focus:text-gray-700 dark:text-gray-700 dark:group-hover:text-gray-500 dark:group-focus:text-gray-700"></FaStar> */}
+									{isDarkMode ? <HiOutlineSun /> : <MdDarkMode /> }
 								</button>
 							</li>
+
 							<li>
 								<div className="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700"></div>
 							</li>
+
 							<li>
 								<button
 									onClick={handleLogOut}
@@ -152,56 +158,55 @@ const Dashboard = () => {
 							</li>
 
 							{/* students only  */}
-							{isAdmin === false &&
-								( isInstructor === false && (
-									<>
-										<li>
-											<Link
-												to="/dashboard/selected-classes"
-												className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-											>
-												<span className="inline-flex justify-center items-center ml-4">
-													<MdOutlineCastForEducation className="w-5 h-5"></MdOutlineCastForEducation>
-												</span>
-												<span className="ml-2 text-sm tracking-wide truncate">
-													My Selected Classes
-												</span>
-												<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
-													{selectedClasses?.length}
-												</span>
-											</Link>
-										</li>
-										<li>
-											<Link
-												to="/dashboard/enrolled-classes"
-												className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-											>
-												<span className="inline-flex justify-center items-center ml-4">
-													<FaBook className="w-5 h-5"></FaBook>
-												</span>
-												<span className="ml-2 text-sm tracking-wide truncate">
-													My Enrolled Classes
-												</span>
-												<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
-													1.2k
-												</span>
-											</Link>
-										</li>
-										<li>
-											<Link
-												to="/dashboard/payment-history"
-												className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-											>
-												<span className="inline-flex justify-center items-center ml-4">
-													<FaCcAmazonPay className="w-5 h-5"></FaCcAmazonPay>
-												</span>
-												<span className="ml-2 text-sm tracking-wide truncate">
-													Payment History
-												</span>
-											</Link>
-										</li>
-									</>
-								))}
+							{isAdmin === false && isInstructor === false && (
+								<>
+									<li>
+										<Link
+											to="/dashboard/selected-classes"
+											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+										>
+											<span className="inline-flex justify-center items-center ml-4">
+												<MdOutlineCastForEducation className="w-5 h-5"></MdOutlineCastForEducation>
+											</span>
+											<span className="ml-2 text-sm tracking-wide truncate">
+												My Selected Classes
+											</span>
+											<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+												{selectedClasses ? selectedClasses?.length : "0"}
+											</span>
+										</Link>
+									</li>
+									<li>
+										<Link
+											to="/dashboard/enrolled-classes"
+											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+										>
+											<span className="inline-flex justify-center items-center ml-4">
+												<FaBook className="w-5 h-5"></FaBook>
+											</span>
+											<span className="ml-2 text-sm tracking-wide truncate">
+												My Enrolled Classes
+											</span>
+											<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+												{enrolledClasses ? enrolledClasses.length : "0"}
+											</span>
+										</Link>
+									</li>
+									<li>
+										<Link
+											to="/dashboard/payment-history"
+											className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+										>
+											<span className="inline-flex justify-center items-center ml-4">
+												<FaCcAmazonPay className="w-5 h-5"></FaCcAmazonPay>
+											</span>
+											<span className="ml-2 text-sm tracking-wide truncate">
+												Payment History
+											</span>
+										</Link>
+									</li>
+								</>
+							)}
 
 							{/* Instructor menu */}
 							{isInstructor && (

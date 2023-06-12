@@ -1,19 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import useProfile from "../../Hooks/useProfile";
 import useAuth from "../../Hooks/useAuth";
 import Banner from "../Shared/Parallax/Banner";
 import Swal from "sweetalert2";
 import useAxiosGlobal from "../../Hooks/useAxiosGlobal";
+import useInstructor from "../../Hooks/useInstructor";
+import useAdmin from "../../Hooks/useAdmin";
 
 const PublicClassNclassNamees = () => {
 	const [allClasses, setAllClasses] = useState([]);
-	const [userProfile] = useProfile();
+	const [isInstructor] = useInstructor()
+	const [isAdmin] = useAdmin()
 	const { user } = useAuth();
 	const [axiosSecure] = useAxiosGlobal();
 
 	useEffect(() => {
-		axios.get("http://localhost:5000/publicClasses").then((res) => {
+		axios.get("https://breakable-baseball-production.up.railway.app/publicClasses").then((res) => {
 			setAllClasses(res.data);
 		});
 	}, []);
@@ -95,7 +97,7 @@ const PublicClassNclassNamees = () => {
 
 							<div className="flex items-center justify-between">
 								<span className="font-bold text-lg">${singleClass?.price}</span>
-								{!userProfile && (
+								
 									<button
 										onClick={() => handleSelect(singleClass)}
 										disabled={singleClass?.seats === 0}
@@ -103,20 +105,7 @@ const PublicClassNclassNamees = () => {
 									>
 										Select
 									</button>
-								)}
-								{userProfile && (
-									<button
-										onClick={() => handleSelect(singleClass)}
-										disabled={
-											singleClass?.seats === 0 ||
-											userProfile?.role === "admin" ||
-											userProfile?.role === "instructor"
-										}
-										className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-									>
-										Select
-									</button>
-								)}
+								
 							</div>
 						</div>
 					</div>
