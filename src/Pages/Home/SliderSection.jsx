@@ -46,7 +46,8 @@ const SliderSection = () => {
 				"Find inner calmness, improve sleep, and restore balance in your daily life.",
 		},
 	];
-
+	//https://yoga-fit.cmsmasters.net/wp-content/uploads/2015/04/bg-trainers-1-600.jpg
+	//https://yoga-fit.cmsmasters.net/wp-content/uploads/2015/04/bg-testim.jpg
 	return (
 		<div className="">
 			<Swiper
@@ -72,14 +73,14 @@ const SliderSection = () => {
 					className="parallax-bg"
 					style={{
 						"backgroundImage":
-							"url(https://i.ibb.co/FBHvNgX/Screenshot-2023-06-07-124036.png)",
+							"url(https://anahata.qodeinteractive.com/wp-content/uploads/2017/01/blog-slide3-background-img-1.jpg)",
 					}}
 					data-swiper-parallax="-23%"
 				></div>
 				{swiperData.map((item) => (
 					<SwiperSlide key={item.text}>
-						<div className="lg:px-28 py-10 h-[500px] space-y-5 flex flex-col justify-center">
-							<h1 className="text-4xl font-semibold text-gray-700">{item.text}</h1>
+						<div className="lg:px-28 py-10 h-[400px] space-y-5 flex flex-col justify-center">
+							<h1 className="text-4xl font-semibold text-gray-100 dark:text-gray-100">{item.text}</h1>
 							<p className="border-l-4 border-yellow-300 ps-2">{item.information}</p>
 							<blockquote>{item.message}</blockquote>
 						</div>

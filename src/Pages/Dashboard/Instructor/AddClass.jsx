@@ -41,7 +41,7 @@ const AddClass = () => {
 				Welcome! Add a Class
 			</h1>
 			<div className="flex items-center justify-center lg:p-12 pt-5">
-				<div className="mx-auto w-full bg-white">
+				<div className="mx-auto w-full bg-white dark:bg-gray-700">
 					<form
 						className="grid lg:grid-cols-2 gap-5"
 						onSubmit={handleSubmit(onSubmit)}
@@ -49,7 +49,7 @@ const AddClass = () => {
 						<div className="mb-3">
 							<label
 								htmlFor="name"
-								className="mb-3 block text-base font-medium text-[#07074D]"
+								className="mb-3 block text-base font-medium text-[#07074D] dark:text-gray-100"
 							>
 								Class Name
 							</label>
@@ -65,7 +65,7 @@ const AddClass = () => {
 						<div className="mb-3">
 							<label
 								htmlFor="image"
-								className="mb-3 block text-base font-medium text-[#07074D]"
+								className="mb-3 block text-base font-medium text-[#07074D] dark:text-gray-100"
 							>
 								Class Image URL
 							</label>
@@ -81,7 +81,7 @@ const AddClass = () => {
 						<div className="mb-3">
 							<label
 								htmlFor="instructor"
-								className="mb-3 block text-base font-medium text-[#07074D]"
+								className="mb-3 block text-base font-medium text-[#07074D] dark:text-gray-100"
 							>
 								Instructor Name
 							</label>
@@ -98,7 +98,7 @@ const AddClass = () => {
 						<div className="mb-3">
 							<label
 								htmlFor="email"
-								className="mb-3 block text-base font-medium text-[#07074D]"
+								className="mb-3 block text-base font-medium text-[#07074D] dark:text-gray-100"
 							>
 								Email Address
 							</label>
@@ -115,7 +115,7 @@ const AddClass = () => {
 						<div className="mb-3">
 							<label
 								htmlFor="seats"
-								className="mb-3 block text-base font-medium text-[#07074D]"
+								className="mb-3 block text-base font-medium text-[#07074D] dark:text-gray-100"
 							>
 								Available Seats
 							</label>
@@ -131,7 +131,7 @@ const AddClass = () => {
 						<div className="mb-3">
 							<label
 								htmlFor="price"
-								className="mb-3 block text-base font-medium text-[#07074D]"
+								className="mb-3 block text-base font-medium text-[#07074D] dark:text-gray-100"
 							>
 								Price
 							</label>

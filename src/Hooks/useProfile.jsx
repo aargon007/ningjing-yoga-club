@@ -8,6 +8,7 @@ const useProfile = () => {
     const { user, loading } = useAuth();
     
     const [axiosSecure] = useAxiosGlobal();
+    
     const { refetch, data: userProfile = [], isLoading: isProfile } = useQuery({
         queryKey: ['userProfile', user?.email],
         enabled: !loading,

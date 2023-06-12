@@ -1,33 +1,25 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import useAuth from "../../Hooks/useAuth";
-import Banner from "../Shared/Parallax/Banner";
-import Swal from "sweetalert2";
-import useAxiosGlobal from "../../Hooks/useAxiosGlobal";
-import { useQuery } from "@tanstack/react-query";
-import Spinner from "../../Pages/Shared/Spinner"
-import useProfile from "../../Hooks/useProfile";
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import React, { useState } from 'react';
+import Spinner from '../Shared/Spinner';
+import useAxiosGlobal from '../../Hooks/useAxiosGlobal';
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
-const PublicClassNclassNamees = () => {
-	const [clsLoading, setClsLoading] = useState(false);
+const PopularClasses = () => {
+    const [popLoader, setPopLoader] = useState(false)
 	const { user } = useAuth();
 	const [axiosSecure] = useAxiosGlobal();
-	
 
-	const { data: allClasses = [], isLoading: isclsLoading } = useQuery({
+    const { data: popularClasses = [], isLoading: isPopLoader } = useQuery({
         queryKey: ['allClasses'],
-        enabled: !clsLoading,
+        enabled: !popLoader,
         queryFn: async () => {
-            const res = await axios.get("https://breakable-baseball-production.up.railway.app/publicClasses")
+            const res = await axios.get("http://localhost:5000/popularClasses")
+            // const res = await axios.get("https://breakable-baseball-production.up.railway.app/popularClasses")
             return res.data;
         },
     })
-
-	// useEffect(() => {
-	// 	if(user){
-	// 		const [userProfile] = useProfile();
-	// 	}
-	// }, [user]);
 
 	const handleSelect = (data) => {
 		if (!user) {
@@ -69,19 +61,15 @@ const PublicClassNclassNamees = () => {
 		}
 	};
 
-	return (
-		<div>
-			<Banner
-				img={
-					"https://yoga-fit.cmsmasters.net/wp-content/uploads/2015/08/heading-2.jpg"
-				}
-				title={"Choose The Class For You"}
-			></Banner>
-
-			{isclsLoading && <Spinner></Spinner>}
+    return (
+        <div>
+            <img src="https://anahata.qodeinteractive.com/wp-content/uploads/2016/12/logo-default.png" alt="popular class" className='mx-auto' />
+            <h1 className='text-center text-4xl font-semibold my-5 dark:text-gray-100'>Our Popular Classes</h1>
+            <p className='text-center text-gray-800 dark:text-gray-100 font-medium'>Yoga Club is where you can find balance, harmony and energy renewal amidst the hectic bustle of everyday pressures and deadlines</p>
+            {isPopLoader && <Spinner></Spinner>}
 			
 			<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-10 dark:text-gray-100">
-				{allClasses.map((singleClass) => (
+				{popularClasses?.map((singleClass) => (
 					<div
 						className={`rounded-md overflow-hidden shadow-md hover:shadow-lg dark:shadow-gray-50/50 ${
 							singleClass?.seats === 0 ? "bg-red-400" : ""
@@ -126,8 +114,8 @@ const PublicClassNclassNamees = () => {
 					</div>
 				))}
 			</div>
-		</div>
-	);
+        </div>
+    );
 };
 
-export default PublicClassNclassNamees;
+export default PopularClasses;

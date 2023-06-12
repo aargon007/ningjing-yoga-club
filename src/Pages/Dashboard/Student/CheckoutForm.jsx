@@ -87,7 +87,7 @@ const CheckoutForm = ({ price, classItem, refetch }) => {
 			setCardError(payload.error.message);
 			setPaymentMethod(null);
 		} else {
-			console.log("[PaymentMethod]", payload.paymentMethod);
+			// console.log("[PaymentMethod]", payload.paymentMethod);
 			setPaymentMethod(payload.paymentMethod);
 			setCardError("");
 		}

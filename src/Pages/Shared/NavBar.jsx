@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { HiMenu, HiX } from "react-icons/hi";
+import { HiMenu, HiOutlineSun, HiX } from "react-icons/hi";
 import useAuth from "../../Hooks/useAuth";
+import { MdDarkMode } from "react-icons/md";
+import useDarkMode from "../../Hooks/DarkMode/useDarkMode";
 
 const NavBar = () => {
 	const [open, setOpen] = useState(false);
 	const { user, logOut, setUser } = useAuth();
+	const [isDarkMode, setIsDarkMode, toggleTheme] = useDarkMode();
 
 	const handleLogOut = () => {
 		logOut()
@@ -183,6 +186,16 @@ const NavBar = () => {
 										Login
 									</Link>
 								)}
+							</li>
+							<li>
+								<button
+									onClick={toggleTheme}
+									aria-hidden="true"
+									className="group p-2 transition-colors duration-200 rounded-full shadow-md bg-blue-100 hover:bg-blue-200 dark:bg-gray-50 dark:hover:bg-gray-200 text-gray-900 focus:outline-none"
+								>
+									{/* <FaStar className="fill-current text-gray-700 group-hover:text-gray-500 group-focus:text-gray-700 dark:text-gray-700 dark:group-hover:text-gray-500 dark:group-focus:text-gray-700"></FaStar> */}
+									{isDarkMode ? <HiOutlineSun /> : <MdDarkMode />}
+								</button>
 							</li>
 						</ul>
 					</div>

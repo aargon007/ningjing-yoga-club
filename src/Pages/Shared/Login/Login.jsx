@@ -84,13 +84,13 @@ const Login = () => {
 	return (
 		<div className="flex items-center">
 			<img
-				src="https://img.freepik.com/premium-vector/happy-cute-little-kid-boy-girl-yoga-pose_97632-2867.jpg"
+				src="https://i.ibb.co/sHSR2Lw/33267970-wx1o-qb45-220918-removebg-preview.png"
 				alt="login yoga"
-				className="w-full h-[700px] object-cover lg:block hidden"
+				className="w-full h-[550px] object-cover lg:block hidden"
 			/>
 			<div className="w-full">
-				<div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 pb-10 pt-5">
-					<div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">
+				<div className="flex flex-col bg-white dark:bg-gray-800 shadow-md px-4 sm:px-6 md:px-8 pb-10 pt-5">
+					<div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800 dark:text-gray-100">
 						Login To Your Account
 					</div>
 					<button
@@ -119,7 +119,7 @@ const Login = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="email"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									E-Mail Address :
 								</label>
@@ -146,7 +146,7 @@ const Login = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="password"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Password :
 								</label>

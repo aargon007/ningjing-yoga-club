@@ -6,8 +6,6 @@ import {
 	FaChalkboardTeacher,
 	FaFolderPlus,
 	FaHome,
-	FaSearch,
-	FaStar,
 	FaUserAlt,
 	FaUsers,
 } from "react-icons/fa";
@@ -27,6 +25,7 @@ import useProfile from "../../Hooks/useProfile";
 import useSelectedClass from "../../Hooks/Student/useSelectedClass";
 import useEnrolledClass from "../../Hooks/Student/useEnrolledClass";
 import useDarkMode from "../../Hooks/DarkMode/useDarkMode";
+import useInstructorClass from "../../Hooks/useInstructorClass";
 
 const Dashboard = () => {
 	const { user, logOut } = useAuth();
@@ -36,6 +35,7 @@ const Dashboard = () => {
 	const [selectedClasses] = useSelectedClass();
 	const [enrolledClasses] = useEnrolledClass();
 	const [isDarkMode, setIsDarkMode, toggleTheme] = useDarkMode();
+	const [instructorClasses] = useInstructorClass()
 	const navigate = useNavigate();
 
 	const handleLogOut = () => {
@@ -234,6 +234,9 @@ const Dashboard = () => {
 											</span>
 											<span className="ml-2 text-sm tracking-wide truncate">
 												My Classes
+											</span>
+											<span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+												{instructorClasses ? instructorClasses.length : "0"}
 											</span>
 										</Link>
 									</li>

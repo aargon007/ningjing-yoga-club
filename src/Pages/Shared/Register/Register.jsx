@@ -103,20 +103,20 @@ const Register = () => {
 	return (
 		<div className="flex pb-10">
 			<img
-				src="https://i.ibb.co/3v1x5rY/13297285-5184247.jpg"
+				src="https://i.ibb.co/mybwNdc/13297285-5184247-removebg-preview.png"
 				className="w-5/12 hidden lg:block"
 				alt=""
 			/>
-			<div className="w-full lg:border-l ">
-				<div className="flex flex-col bg-white px-4 sm:px-6 md:px-8  lg:px-10">
-					<div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+			<div className="w-full ">
+				<div className="flex flex-col bg-white dark:bg-gray-800 py-4 px-4 sm:px-6 md:px-8  lg:px-10">
+					<div className="font-medium self-center text-xl sm:text-3xl text-gray-800 dark:text-gray-100">
 						Register Now
 					</div>
-					<div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+					<div className="mt-4 self-center text-xl sm:text-sm text-gray-800 dark:text-gray-100">
 						Enter your credentials to get access account
 					</div>
 					{successUser && (
-						<div className="text-center p-3 bg-green-50 text-green-600 my-3 rounded-md">
+						<div className="text-center p-3 bg-green-50 text-green-600 mt-5 rounded-md">
 							<p>{successUser}</p>
 						</div>
 					)}
@@ -125,15 +125,15 @@ const Register = () => {
 							<p>{emailError}</p>
 						</div>
 					)}
-					<div className="mt-10">
+					<div className="mt-10 ">
 						<form
-							className="grid lg:grid-cols-2 grid-cols-1 md:gap-5"
+							className="grid lg:grid-cols-2 grid-cols-1 md:gap-5 "
 							onSubmit={handleSubmit(onSubmit)}
 						>
 							<div className="flex flex-col mb-5">
 								<label
 									htmlFor="name"
-									className="mb-1 text-xs tracking-wide text-gray-600"
+									className="mb-1 text-xs tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Name :
 								</label>
@@ -150,12 +150,17 @@ const Register = () => {
 										placeholder="Enter your name"
 									/>
 								</div>
+								{errors.email && (
+									<span className="text-red-600 text-sm">
+										name is required
+									</span>
+								)}
 							</div>
 
 							<div className="flex flex-col mb-5">
 								<label
 									htmlFor="email"
-									className="mb-1 text-xs tracking-wide text-gray-600"
+									className="mb-1 text-xs tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									E-Mail Address :
 								</label>
@@ -182,7 +187,7 @@ const Register = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="password"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Password :
 								</label>
@@ -223,7 +228,7 @@ const Register = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="confirm"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Confirm Password :
 								</label>
@@ -250,7 +255,7 @@ const Register = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="photo"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Photo URL :
 								</label>
@@ -274,7 +279,7 @@ const Register = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="gender"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Gender :
 								</label>
@@ -294,7 +299,7 @@ const Register = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="phone"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Phone Number :
 								</label>
@@ -318,7 +323,7 @@ const Register = () => {
 							<div className="flex flex-col mb-6">
 								<label
 									htmlFor="address"
-									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+									className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600 dark:text-gray-100"
 								>
 									Address :
 								</label>
@@ -348,7 +353,7 @@ const Register = () => {
 								</button>
 							</div>
 						</form>
-						<p className="mt-3 text-center">
+						<p className="mt-3 text-center dark:text-gray-100">
 							Already Registered ?
 							<Link
 								to="/login"

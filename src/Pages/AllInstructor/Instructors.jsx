@@ -2,22 +2,30 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import Banner from "../Shared/Parallax/Banner";
+import { useQuery } from "@tanstack/react-query";
 
 const Instructors = () => {
-	const [allInstructor, setAllInstructor] = useState([]);
+	// const [allInstructor, setAllInstructor] = useState([]);
 
-	useEffect(() => {
-		axios.get("https://breakable-baseball-production.up.railway.app/allInstructors").then((res) => {
-			console.log(res.data);
-			setAllInstructor(res.data);
-		});
-	}, []);
+	const { data: allInstructor = [] } = useQuery({
+        queryKey: ['allInstructor'],
+        queryFn: async () => {
+            const res = await axios.get("https://breakable-baseball-production.up.railway.app/allInstructors")
+            return res.data;
+        },
+    })
+	// useEffect(() => {
+	// 	axios.get("https://breakable-baseball-production.up.railway.app/allInstructors").then((res) => {
+	// 		console.log(res.data);
+	// 		setAllInstructor(res.data);
+	// 	});
+	// }, []);
 
 	return (
 		<>
 			<Banner
 				img={
-					"https://anahata.qodeinteractive.com/wp-content/uploads/2016/11/blog-single-link1-img.jpg"
+					"https://yoga-fit.cmsmasters.net/wp-content/uploads/2015/04/bg-testim.jpg"
 				}
 				title={"Meet Our Instructor"}
 			></Banner>
@@ -26,7 +34,7 @@ const Instructors = () => {
 				{allInstructor?.map((instructor, index) => (
 					<div
 						key={instructor?._id}
-						className="flex justify-between lg:flex-row flex-col gap-10 rounded-md shadow-md bg-gray-100"
+						className="flex justify-between lg:flex-row flex-col lg:gap-10 rounded-md shadow-md bg-gray-100"
 					>
 						<img
 							src={instructor?.photo}

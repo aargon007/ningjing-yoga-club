@@ -44,7 +44,7 @@ const ManageUsers = () => {
 					{users?.map((user) => (
 						<tr
 							key={user._id}
-							className="bg-white  flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-5 lg:mb-0"
+							className="bg-white dark:bg-gray-700 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-5 lg:mb-0"
 						>
 							<td className="tabletd border-b-0 lg:border-b">
 								<span className="lg:hidden px-2 py-1 font-bold text-sm">

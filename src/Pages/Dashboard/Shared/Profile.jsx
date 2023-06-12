@@ -48,54 +48,54 @@ const Profile = () => {
 
 	return (
 		<>
-			<div className="bg-white overflow-hidden shadow rounded-lg border">
+			<div className="bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg border">
 				<div className="px-4 py-5 sm:px-6">
-					<h3 className="text-lg leading-6 font-medium text-gray-900">
+					<h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
 						User Info
 					</h3>
 				</div>
 				<div className="border-t border-gray-200 px-4 py-5 sm:p-0">
 					<dl className="sm:divide-y sm:divide-gray-200">
 						<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-							<dt className="text-sm font-medium text-gray-500">Full name</dt>
-							<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							<dt className="dt">Full name</dt>
+							<dd className="mt-1 text-sm text-gray-900  sm:mt-0 sm:col-span-2 dark:text-gray-100">
 								{userProfile?.name ? userProfile.name : <Spinner></Spinner>}
 							</dd>
 						</div>
 						<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-							<dt className="text-sm font-medium text-gray-500">
+							<dt className="dt">
 								Email address
 							</dt>
-							<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							<dd className="dd">
 								{userProfile?.email}
 							</dd>
 						</div>
 						<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-							<dt className="text-sm font-medium text-gray-500">Gender</dt>
-							<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							<dt className="dt">Gender</dt>
+							<dd className="dd">
 								{userProfile?.gender?.label}
 							</dd>
 						</div>
 						<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-							<dt className="text-sm font-medium text-gray-500">
+							<dt className="dt">
 								Phone number
 							</dt>
-							<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							<dd className="dd">
 								{userProfile?.phone}
 							</dd>
 						</div>
 						<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-							<dt className="text-sm font-medium text-gray-500">Address</dt>
-							<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							<dt className="dt">Address</dt>
+							<dd className="dd">
 								{userProfile?.address}
 							</dd>
 						</div>
 					</dl>
 				</div>
 			</div>
-			<div className="bg-white overflow-hidden shadow rounded-lg border mt-5">
+			<div className="bg-white dark:bg-gray-700 overflow-hidden shadow rounded-lg border mt-5">
 				<div className="px-4 py-5 sm:px-6">
-					<h3 className="text-lg leading-6 font-medium text-gray-900">
+					<h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
 						Update User Profile
 					</h3>
 				</div>
@@ -103,8 +103,8 @@ const Profile = () => {
 					<form onSubmit={handleSubmit(onSubmit)} className="sm:divide-y sm:divide-gray-200">
 						
 							<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-								<dt className="text-sm font-medium text-gray-500">Full name</dt>
-								<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+								<dt className="dt">Full name</dt>
+								<dd className="dd">
 									<input
 										id="name"
 										type="text"
@@ -116,8 +116,8 @@ const Profile = () => {
 								</dd>
 							</div>
 							<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-								<dt className="text-sm font-medium text-gray-500">Photo URL</dt>
-								<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+								<dt className="dt">Photo URL</dt>
+								<dd className="dd">
 									<input
 										id="photo"
 										type="url"
@@ -129,20 +129,21 @@ const Profile = () => {
 								</dd>
 							</div>
 							<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-								<dt className="text-sm font-medium text-gray-500">Gender</dt>
-								<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+								<dt className="dt">Gender</dt>
+								<dd className="dd">
 									<CreatableSelect
 										isClearable
 										options={gender}
+										className="dark:text-black"
 										onChange={setSelectedOption}
 									/>
 								</dd>
 							</div>
 							<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-								<dt className="text-sm font-medium text-gray-500">
+								<dt className="dt">
 									Phone number
 								</dt>
-								<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+								<dd className="dd">
 									<input
 										id="phone"
 										type="number"
@@ -154,8 +155,8 @@ const Profile = () => {
 								</dd>
 							</div>
 							<div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-								<dt className="text-sm font-medium text-gray-500">Address</dt>
-								<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+								<dt className="dt">Address</dt>
+								<dd className="dd">
 									<input
 										id="address"
 										type="text"

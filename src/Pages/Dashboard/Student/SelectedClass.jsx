@@ -63,7 +63,7 @@ const SelectedClass = () => {
 						</span>
 						<img src={selectCls?.image} className="lg:w-4/12 rounded-t-md lg:rounded-tr-none lg:rounded-s-md" alt="" />
 						<div className="lg:w-8/12 py-4 lg:pr-5 px-5 space-y-3">
-							<h1 className="text-xl text-gray-700 font-semibold">
+							<h1 className="text-xl text-gray-700 dark:text-gray-100 font-semibold">
 								{selectCls?.name}
 							</h1>
 							<h3>Instructor : {selectCls?.instructor}</h3>

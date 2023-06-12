@@ -59,7 +59,7 @@ const ManageClasses = () => {
 					{classes?.map((yogaClass) => (
 						<tr
 							key={yogaClass?._id}
-							className="bg-white hover:bg-slate-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-5 lg:mb-0"
+							className="bg-white dark:bg-gray-700 hover:bg-slate-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-5 lg:mb-0"
 						>
 							<td className="tabletd border-b-0 lg:border-b">
 								<span className="lg:hidden px-2 py-1 font-bold ">
