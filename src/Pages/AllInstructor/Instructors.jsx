@@ -8,13 +8,14 @@ const Instructors = () => {
 	// const [allInstructor, setAllInstructor] = useState([]);
 
 	const { data: allInstructor = [] } = useQuery({
-        queryKey: ['allInstructor'],
-        queryFn: async () => {
-            const res = await axios.get("https://breakable-baseball-production.up.railway.app/allInstructors")
-            return res.data;
-        },
-    })
-	
+		queryKey: ["allInstructor"],
+		queryFn: async () => {
+			const res = await axios.get(
+				"https://breakable-baseball-production.up.railway.app/allInstructors"
+			);
+			return res.data;
+		},
+	});
 
 	return (
 		<>
@@ -29,13 +30,15 @@ const Instructors = () => {
 				{allInstructor?.map((instructor, index) => (
 					<div
 						key={instructor?._id}
-						className="flex justify-between lg:flex-row flex-col lg:gap-10 rounded-md shadow-md bg-gray-100"
+						className="flex justify-between lg:flex-row flex-col lg:gap-5 rounded-md shadow-md bg-gray-100"
 					>
-						<img
-							src={instructor?.photo}
-							className="w-full h-[250px] rounded-t-md lg:rounded-tr-none lg:rounded-s-md"
-							alt=""
-						/>
+						<div className="lg:w-8/12">
+							<img
+								src={instructor?.photo}
+								className="w-full h-full rounded-t-md lg:rounded-tr-none lg:rounded-s-md"
+								alt=""
+							/>
+						</div>
 						<div className="w-full space-y-3 p-5">
 							<h1 className="text-2xl text-gray-700 font-medium tracking-wider">
 								{instructor?.name}
