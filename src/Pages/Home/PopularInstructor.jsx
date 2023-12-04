@@ -9,7 +9,7 @@ const PopularInstructor = () => {
 		queryKey: ["popInstructor"],
 		queryFn: async () => {
 			const res = await axios.get(
-				"https://breakable-baseball-production.up.railway.app/allInstructors"
+				"http://97.74.85.84:5050/allInstructors"
 			);
 			return res.data;
 		},

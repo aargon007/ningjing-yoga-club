@@ -16,7 +16,7 @@ const PopularClasses = () => {
         enabled: !popLoader,
         queryFn: async () => {
             // const res = await axios.get("http://localhost:5000/popularClasses")
-            const res = await axios.get("https://breakable-baseball-production.up.railway.app/popularClasses")
+            const res = await axios.get("http://97.74.85.84:5050/popularClasses")
             return res.data;
         },
     })
