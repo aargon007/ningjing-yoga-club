@@ -81,7 +81,7 @@ const Register = () => {
 					.catch((error) => console.log(error));
 				axios
 					.post(
-						"https://breakable-baseball-production.up.railway.app/users",
+						"http://97.74.85.84:5050/users",
 						userInfo
 					)
 					.then((res) => {

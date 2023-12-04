@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
 			// get and set token
 			if (currentUser) {
 				axios
-					.post("https://breakable-baseball-production.up.railway.app/jwt", {
+					.post("http://97.74.85.84:5050/jwt", {
 						email: currentUser.email,
 					})
 					.then((data) => {

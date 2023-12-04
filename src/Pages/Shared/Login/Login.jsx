@@ -60,7 +60,7 @@ const Login = () => {
 				const loggedUser = result.user;
 				const { displayName, photoURL, phoneNumber, email } = loggedUser;
 				axios
-					.post("https://breakable-baseball-production.up.railway.app/users", {
+					.post("http://97.74.85.84:5050/users", {
 						name: displayName,
 						email,
 						photo: photoURL,
