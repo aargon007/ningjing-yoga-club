@@ -74,14 +74,14 @@ const NavBar = () => {
 						{user ? (
 							<button
 								onClick={handleLogOut}
-								className="hidden lg:block text-white bg-purple-500 hover:bg-purple-600  font-medium rounded-lg text-sm px-4  py-2   dark:bg-purple-600 dark:hover:bg-purple-700 "
+								className="hidden lg:block text-white bg-blue-500 hover:bg-blue-600  font-medium rounded-lg text-sm px-4  py-2   dark:bg-blue-600 dark:hover:bg-blue-700 "
 							>
 								Log Out
 							</button>
 						) : (
 							<Link
 								to="/login"
-								className="hidden lg:block text-white bg-purple-500 hover:bg-purple-600 font-medium rounded-lg text-sm px-4  py-2 dark:bg-purple-600 dark:hover:bg-purple-700"
+								className="hidden lg:block text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-4  py-2 dark:bg-blue-600 dark:hover:bg-blue-700"
 							>
 								Login
 							</Link>
@@ -158,14 +158,14 @@ const NavBar = () => {
 								{user ? (
 									<button
 										onClick={handleLogOut}
-										className="lg:hidden block text-white bg-purple-700 hover:bg-purple-800  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 "
+										className="lg:hidden block text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 "
 									>
 										Log Out
 									</button>
 								) : (
 									<Link
 										to="/login"
-										className="lg:hidden block text-white bg-purple-700 hover:bg-purple-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700"
+										className="lg:hidden block text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700"
 									>
 										Login
 									</Link>
