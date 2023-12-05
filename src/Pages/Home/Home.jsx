@@ -5,6 +5,7 @@ import PopularInstructor from './PopularInstructor';
 import Benefits from './Benefits';
 import Food from './Food';
 import Stats from './Stats';
+import Apps from './Apps';
 
 const Home = () => {
 
@@ -16,6 +17,7 @@ const Home = () => {
             <PopularClasses></PopularClasses>
             <PopularInstructor></PopularInstructor>
             <Food></Food>
+            <Apps/>
         </div>
     );
 };
