@@ -11,7 +11,7 @@ const Instructors = () => {
 		queryKey: ["allInstructor"],
 		queryFn: async () => {
 			const res = await axios.get(
-				"http://97.74.85.84:5050/allInstructors"
+				"https://api.workhub.tech/ningjing/allInstructors"
 			);
 			return res.data;
 		},

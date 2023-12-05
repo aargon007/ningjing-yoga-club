@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
 			// get and set token
 			if (currentUser) {
 				axios
-					.post("http://97.74.85.84:5050/jwt", {
+					.post("https://api.workhub.tech/ningjing/jwt", {
 						email: currentUser.email,
 					})
 					.then((data) => {

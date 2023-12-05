@@ -81,7 +81,7 @@ const Register = () => {
 					.catch((error) => console.log(error));
 				axios
 					.post(
-						"http://97.74.85.84:5050/users",
+						"https://api.workhub.tech/ningjing/users",
 						userInfo
 					)
 					.then((res) => {

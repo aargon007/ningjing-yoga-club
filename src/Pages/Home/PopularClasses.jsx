@@ -16,7 +16,7 @@ const PopularClasses = () => {
 		enabled: !popLoader,
 		queryFn: async () => {
 			// const res = await axios.get("http://localhost:5000/popularClasses")
-			const res = await axios.get("http://97.74.85.84:5050/popularClasses");
+			const res = await axios.get("https://api.workhub.tech/ningjing/popularClasses");
 			return res.data;
 		},
 	});

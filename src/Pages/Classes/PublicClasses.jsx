@@ -26,7 +26,7 @@ const PublicClassNclassNamees = () => {
         queryKey: ['allClasses'],
         enabled: !clsLoading,
         queryFn: async () => {
-            const res = await axios.get("http://97.74.85.84:5050/publicClasses")
+            const res = await axios.get("https://api.workhub.tech/ningjing/publicClasses")
             return res.data;
         },
     })

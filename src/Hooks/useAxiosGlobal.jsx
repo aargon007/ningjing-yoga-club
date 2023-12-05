@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-	baseURL: "http://97.74.85.84:5050/",
+	baseURL: "https://api.workhub.tech/ningjing/",
 	// baseURL: "http://localhost:5000",
 });
 

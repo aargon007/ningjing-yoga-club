@@ -9,7 +9,6 @@ import {
 } from "@stripe/react-stripe-js";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosGlobal from "../../../Hooks/useAxiosGlobal";
-import useSelectedClass from "../../../Hooks/Student/useSelectedClass";
 import "./CheckoutForm.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";

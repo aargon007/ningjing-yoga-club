@@ -7,7 +7,7 @@ const PopularInstructor = () => {
 	const { data: popInstructor = [] } = useQuery({
 		queryKey: ["popInstructor"],
 		queryFn: async () => {
-			const res = await axios.get("http://97.74.85.84:5050/allInstructors");
+			const res = await axios.get("https://api.workhub.tech/ningjing/allInstructors");
 			return res.data;
 		},
 	});

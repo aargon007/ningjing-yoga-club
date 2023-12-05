@@ -60,7 +60,7 @@ const Login = () => {
 				const loggedUser = result.user;
 				const { displayName, photoURL, phoneNumber, email } = loggedUser;
 				axios
-					.post("http://97.74.85.84:5050/users", {
+					.post("https://api.workhub.tech/ningjing/users", {
 						name: displayName,
 						email,
 						photo: photoURL,
