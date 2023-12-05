@@ -13,7 +13,7 @@ const Main = () => {
 				className="progress-bar"
 				style={{ scaleX: scrollYProgress }}
 			/>
-			<div className=" space-y-5">
+			<div className=" space-y-5 overflow-hidden">
 				<div className="md:px-28 px-5 space-y-5 lg:space-y-10">
 					<NavBar />
 					<Outlet />

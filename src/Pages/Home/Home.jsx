@@ -4,6 +4,7 @@ import PopularClasses from './PopularClasses';
 import PopularInstructor from './PopularInstructor';
 import Benefits from './Benefits';
 import Food from './Food';
+import Stats from './Stats';
 
 const Home = () => {
 
@@ -11,6 +12,7 @@ const Home = () => {
         <div className='space-y-14'>
             <SliderSection/>
             <Benefits></Benefits>
+            <Stats/>
             <PopularClasses></PopularClasses>
             <PopularInstructor></PopularInstructor>
             <Food></Food>
