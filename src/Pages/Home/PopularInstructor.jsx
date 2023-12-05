@@ -19,7 +19,7 @@ const PopularInstructor = () => {
 				alt="popular instructor"
 				className="mx-auto w-14"
 			/>
-			<h1 className="text-center text-4xl font-semibold my-5 dark:text-gray-100">
+			<h1 className="text-center text-4xl font-semibold my-5 bg-clip-text bg-gradient-to-r from-[#f7972f] to-blue-700 text-transparent">
 				Our Popular Instructor
 			</h1>
 			<p className="text-center text-gray-800 dark:text-gray-100 font-medium">

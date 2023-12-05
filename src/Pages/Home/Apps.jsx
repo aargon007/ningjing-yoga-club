@@ -12,7 +12,7 @@ const Apps = () => {
 
 			<div className="w-full">
 				<section>
-					<h2 className="font-medium text-[2.45rem] dark:text-white">
+					<h2 className="font-medium text-[30px] md:text-[2.45rem] bg-clip-text bg-gradient-to-r from-[#f7972f] to-blue-700 text-transparent">
 						<span className="">For every space,</span> <br />
 						<span className="">at any pace</span>
 					</h2>
@@ -22,26 +22,29 @@ const Apps = () => {
 							Now access all your favorite classes on your favorite Smart TV
 							&amp; Mobile Apps.
 						</p>
-						<div className="grid grid-cols-2 mt-5 gap-5">
-							<img
-								className="h-[48px] w-[120px]"
-								src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/images.png"
-							/>
+						<div className="flex flex-col mt-5 gap-5">
+							<div className="flex items-center gap-5">
+								<img
+									className="h-[48px] w-[120px]"
+									src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/images.png"
+								/>
 
-							<img
-								className="h-[48px] w-[120px]"
-								src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/download%20%2812%29.png"
-							/>
+								<img
+									className="h-[48px] w-[120px]"
+									src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/download%20%2812%29.png"
+								/>
+							</div>
+							<div className="flex items-center gap-5">
+								<img
+									className="h-[48px] w-[120px]"
+									src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/download%20%2814%29.png"
+								/>
 
-							<img
-								className="h-[48px] w-[120px]"
-								src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/download%20%2814%29.png"
-							/>
-
-							<img
-								className="h-[48px] w-[120px]"
-								src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/roku-logo.png"
-							/>
+								<img
+									className="h-[48px] w-[120px]"
+									src="https://www.doyogawithme.com/sites/default/files/media/image/field_media_image/2022/05/roku-logo.png"
+								/>
+							</div>
 						</div>
 					</div>
 				</section>

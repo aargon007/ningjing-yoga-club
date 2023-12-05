@@ -48,7 +48,7 @@ const Food = () => {
 
 	return (
 		<div>
-			<h1 className="text-center text-3xl lg:text-4xl font-thin text-[#4283df]">
+			<h1 className="text-center text-3xl lg:text-4xl font-semibold bg-clip-text bg-gradient-to-r from-[#f7972f] to-blue-700 text-transparent">
 				You are What You Eat
 			</h1>
 			<p className="text-center text-gray-700 dark:text-gray-100 lg:text-xl leading-8 mt-3">

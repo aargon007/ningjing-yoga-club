@@ -1,25 +1,25 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import React, { useState } from 'react';
-import Spinner from '../Shared/Spinner';
-import useAxiosGlobal from '../../Hooks/useAxiosGlobal';
-import useAuth from '../../Hooks/useAuth';
-import Swal from 'sweetalert2';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useState } from "react";
+import Spinner from "../Shared/Spinner";
+import useAxiosGlobal from "../../Hooks/useAxiosGlobal";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const PopularClasses = () => {
-    const [popLoader, setPopLoader] = useState(false)
+	const [popLoader, setPopLoader] = useState(false);
 	const { user } = useAuth();
 	const [axiosSecure] = useAxiosGlobal();
 
-    const { data: popularClasses = [], isLoading: isPopLoader } = useQuery({
-        queryKey: ['allClasses'],
-        enabled: !popLoader,
-        queryFn: async () => {
-            // const res = await axios.get("http://localhost:5000/popularClasses")
-            const res = await axios.get("http://97.74.85.84:5050/popularClasses")
-            return res.data;
-        },
-    })
+	const { data: popularClasses = [], isLoading: isPopLoader } = useQuery({
+		queryKey: ["allClasses"],
+		enabled: !popLoader,
+		queryFn: async () => {
+			// const res = await axios.get("http://localhost:5000/popularClasses")
+			const res = await axios.get("http://97.74.85.84:5050/popularClasses");
+			return res.data;
+		},
+	});
 
 	const handleSelect = (data) => {
 		if (!user) {
@@ -32,8 +32,8 @@ const PopularClasses = () => {
 			});
 			return;
 		}
-		if(userProfile?.role === "admin" || userProfile?.role === "instructor"){
-			return
+		if (userProfile?.role === "admin" || userProfile?.role === "instructor") {
+			return;
 		}
 		if (user) {
 			const sendingData = {
@@ -43,7 +43,7 @@ const PopularClasses = () => {
 				price: data?.price,
 				isPaid: false,
 				studentEmail: user?.email,
-				image : data?.image
+				image: data?.image,
 			};
 			// console.log(sendingData);
 			axiosSecure.post("/selectedClasses", sendingData).then((res) => {
@@ -61,13 +61,22 @@ const PopularClasses = () => {
 		}
 	};
 
-    return (
-        <div>
-            <img src="https://anahata.qodeinteractive.com/wp-content/uploads/2016/12/logo-default.png" alt="popular class" className='mx-auto' />
-            <h1 className='text-center text-4xl font-semibold my-5 dark:text-gray-100'>Our Popular Classes</h1>
-            <p className='text-center text-gray-800 dark:text-gray-100 font-medium'>Yoga Club is where you can find balance, harmony and energy renewal amidst the hectic bustle of everyday pressures and deadlines</p>
-            {isPopLoader && <Spinner></Spinner>}
-			
+	return (
+		<div>
+			<img
+				src="https://anahata.qodeinteractive.com/wp-content/uploads/2016/12/logo-default.png"
+				alt="popular class"
+				className="mx-auto"
+			/>
+			<h1 className="text-center text-4xl font-semibold my-5 bg-clip-text bg-gradient-to-r from-[#f7972f] to-blue-700 text-transparent">
+				Our Popular Classes
+			</h1>
+			<p className="text-center text-gray-800 dark:text-gray-100 font-medium">
+				Yoga Club is where you can find balance, harmony and energy renewal
+				amidst the hectic bustle of everyday pressures and deadlines
+			</p>
+			{isPopLoader && <Spinner></Spinner>}
+
 			<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-10 dark:text-gray-100">
 				{popularClasses?.map((singleClass) => (
 					<div
@@ -100,22 +109,21 @@ const PopularClasses = () => {
 
 							<div className="flex items-center justify-between">
 								<span className="font-bold text-lg">${singleClass?.price}</span>
-								
-									<button
-										onClick={() => handleSelect(singleClass)}
-										disabled={singleClass?.seats === 0}
-										className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-									>
-										Select
-									</button>
-								
+
+								<button
+									onClick={() => handleSelect(singleClass)}
+									disabled={singleClass?.seats === 0}
+									className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+								>
+									Select
+								</button>
 							</div>
 						</div>
 					</div>
 				))}
 			</div>
-        </div>
-    );
+		</div>
+	);
 };
 
 export default PopularClasses;
