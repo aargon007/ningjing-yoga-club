@@ -24,7 +24,7 @@ const AddClass = () => {
 		axiosSecure.post("/classes", data).then((res) => {
 			reset();
 			console.log(res);
-            Swal.fire({
+			Swal.fire({
 				position: "top-end",
 				icon: "success",
 				title: "Class added successfully.",
@@ -32,7 +32,6 @@ const AddClass = () => {
 				timer: 1500,
 			});
 		});
-		
 	};
 
 	return (
@@ -40,6 +39,7 @@ const AddClass = () => {
 			<h1 className="text-center text-2xl font-semibold">
 				Welcome! Add a Class
 			</h1>
+
 			<div className="flex items-center justify-center lg:p-12 pt-5">
 				<div className="mx-auto w-full bg-white dark:bg-gray-700">
 					<form
@@ -58,7 +58,7 @@ const AddClass = () => {
 								{...register("name", { required: true })}
 								id="name"
 								placeholder="Class Name"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+								className="w-full rounded-md border transition-all border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
 
@@ -74,7 +74,7 @@ const AddClass = () => {
 								{...register("image", { required: true })}
 								id="image"
 								placeholder="Enter Image URL"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+								className="w-full rounded-md border border-[#e0e0e0] transition-all bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
 
@@ -91,7 +91,7 @@ const AddClass = () => {
 								value={userProfile?.name}
 								id="instructor"
 								placeholder="Instructor Name"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+								className="w-full rounded-md border border-[#e0e0e0] transition-all bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
 
@@ -108,7 +108,7 @@ const AddClass = () => {
 								value={userProfile?.email}
 								id="email"
 								placeholder="example@domain.com"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+								className="w-full rounded-md border border-[#e0e0e0] transition-all bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
 
@@ -124,7 +124,7 @@ const AddClass = () => {
 								{...register("seats", { required: true })}
 								id="seats"
 								placeholder="Available seats"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+								className="w-full rounded-md border border-[#e0e0e0] transition-all bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
 
@@ -140,7 +140,7 @@ const AddClass = () => {
 								{...register("price", { required: true })}
 								id="price"
 								placeholder="Price"
-								className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+								className="w-full rounded-md border border-[#e0e0e0] transition-all bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 							/>
 						</div>
 

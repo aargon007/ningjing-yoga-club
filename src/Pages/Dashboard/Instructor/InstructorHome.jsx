@@ -10,7 +10,8 @@ const InstructorHome = () => {
 
 	return (
 		<div>
-			<div className="max-w-2xl sm:mx-auto bg-white dark:bg-gray-700 shadow-xl rounded-lg text-gray-900 dark:text-gray-100">
+			{/* profile card  */}
+			<div className="max-w-2xl sm:mx-auto bg-white dark:bg-gray-700 shadow rounded-lg text-gray-900 dark:text-gray-100">
 				<div className="rounded-t-lg h-28 overflow-hidden">
 					<img
 						className="object-cover object-top w-full"
@@ -47,8 +48,9 @@ const InstructorHome = () => {
 
 			<div className="container relative z-40 mx-auto mt-12 shadow-xl">
 				<div className="flex flex-wrap justify-center mx-auto lg:w-full md:w-5/6 xl:shadow-small-blue">
+					{/* profile  */}
 					<Link to='/dashboard/profile'
-						className="block w-1/2 py-10 text-center bg-white dark:bg-gray-700  border lg:w-1/3 border-gray  hover:bg-gradient-to-l from-green-200 to-green-300 dark:from-gray-500 dark:to-gray-700 relative overflow-hidden"
+						className="block w-1/2 py-10 text-center transition-all bg-white dark:bg-gray-700  border lg:w-1/3 border-gray  hover:bg-gradient-to-l from-green-200 to-green-300 dark:from-gray-500 dark:to-gray-700 relative overflow-hidden"
 					>
 						<div>
 							<img
@@ -63,9 +65,9 @@ const InstructorHome = () => {
 							</div>
 						</div>
 					</Link>
-
+					{/* add class  */}
 					<Link to='/dashboard/add-class'
-						className="block w-1/2 py-10 text-center bg-white dark:bg-gray-700 border lg:w-1/3 border-gray  hover:bg-gradient-to-l from-green-200 to-green-300 dark:from-gray-500 dark:to-gray-700 relative overflow-hidden"
+						className="block w-1/2 py-10 text-center transition-all bg-white dark:bg-gray-700 border lg:w-1/3 border-gray  hover:bg-gradient-to-l from-green-200 to-green-300 dark:from-gray-500 dark:to-gray-700 relative overflow-hidden"
 					>
 						<div>
 							<img
@@ -80,9 +82,9 @@ const InstructorHome = () => {
 							</div>
 						</div>
 					</Link>
-
+					{/* my class  */}
 					<Link to='/dashboard/my-classes'
-						className="block w-full py-10 text-center bg-white dark:bg-gray-700 border lg:w-1/3 border-gray  hover:bg-gradient-to-l from-green-200 to-green-300 dark:from-gray-500 dark:to-gray-700 relative overflow-hidden"
+						className="block w-full py-10 text-center transition-all bg-white dark:bg-gray-700 border lg:w-1/3 border-gray  hover:bg-gradient-to-l from-green-200 to-green-300 dark:from-gray-500 dark:to-gray-700 relative overflow-hidden"
 					>
 						<div>
 							<img

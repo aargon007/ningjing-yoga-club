@@ -65,10 +65,9 @@ const Login = () => {
 						email,
 						photo: photoURL,
 						phone: phoneNumber,
-						role : "student",
-						gender : {value : "", label : ""},
-						address : "",
-
+						role: "student",
+						gender: { value: "", label: "" },
+						address: "",
 					})
 					.then((res) => {
 						// console.log(res);
@@ -89,7 +88,7 @@ const Login = () => {
 				className="w-full h-[550px] object-cover lg:block hidden"
 			/>
 			<div className="w-full">
-				<div className="flex flex-col bg-white dark:bg-gray-800 shadow-md px-4 sm:px-6 md:px-8 pb-10 pt-5">
+				<div className="flex flex-col bg-white dark:bg-gray-800 px-4 sm:px-6 md:px-8 pb-10 pt-5">
 					<div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800 dark:text-gray-100">
 						Login To Your Account
 					</div>
@@ -134,6 +133,7 @@ const Login = () => {
 										{...register("email", { required: true })}
 										className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"
 										placeholder="E-Mail Address"
+										defaultValue={"deng@lun.com"}
 									/>
 								</div>
 								{errors.email && (
@@ -157,6 +157,7 @@ const Login = () => {
 
 									<input
 										id="password"
+										defaultValue={"333444F#"}
 										type={passwordVisible ? "text" : "password"}
 										{...register("password", { required: true })}
 										className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400"

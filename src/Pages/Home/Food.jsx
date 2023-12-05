@@ -58,7 +58,10 @@ const Food = () => {
 			{/* food card */}
 			<div className="grid lg:grid-cols-4 gap-5 mt-5">
 				{foods?.map((food) => (
-					<div key={food.id} className="shadow-md pb-4 hover:shadow-xl transition-all">
+					<div
+						key={food.id}
+						className="shadow-md pb-4 hover:shadow-xl transition-all"
+					>
 						<img
 							src={`${food.src}`}
 							className="w-[250px] h-[220px] py-2 mx-auto"

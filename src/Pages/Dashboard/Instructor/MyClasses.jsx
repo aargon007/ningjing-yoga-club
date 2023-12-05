@@ -1,22 +1,8 @@
-import React, { useState } from "react";
 import useInstructorClass from "../../../Hooks/useInstructorClass";
-import useAxiosGlobal from "../../../Hooks/useAxiosGlobal";
-import Swal from "sweetalert2";
 import UpdateClassInfo from "./UpdateClassInfo";
 
 const MyClasses = () => {
 	const [instructorClasses, refetch, isInstructorClass] = useInstructorClass();
-	const [isOpen, setIsOpen] = useState(false);
-	const [modalClass, setModalClass] = useState({});
-
-	const openModal = (updateClass) => {
-		setModalClass(updateClass);
-		setIsOpen(true);
-	};
-
-	const closeModal = () => {
-		setIsOpen(false);
-	};
 
 	return (
 		<div>
@@ -36,6 +22,7 @@ const MyClasses = () => {
 						<th className="tableth">Actions</th>
 					</tr>
 				</thead>
+
 				<tbody>
 					{instructorClasses?.map((yogaClass) => (
 						<tr
@@ -83,10 +70,9 @@ const MyClasses = () => {
 								</span>
 								{yogaClass?.seats}
 							</td>
+
 							<td className="tabletd border-b-0 lg:border-b border-t-0 lg:border-t lg:text-center">
-								<span className="lg:hidden px-2 py-1 font-bold ">
-									Price :{" "}
-								</span>
+								<span className="lg:hidden px-2 py-1 font-bold ">Price : </span>
 								${yogaClass?.price}
 							</td>
 
@@ -101,23 +87,12 @@ const MyClasses = () => {
 								<span className="lg:hidden px-2 py-1  font-bold">
 									Actions :{" "}
 								</span>
-								<button
-									onClick={() => openModal(yogaClass)}
-									className=" lg:text-base rounded bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 me-3"
-								>
-									Update
-								</button>
+								<UpdateClassInfo refetch={refetch} modalClass={yogaClass} />
 							</td>
 						</tr>
 					))}
 				</tbody>
 			</table>
-			<UpdateClassInfo
-            refetch={refetch}
-				isOpen={isOpen}
-				onClose={closeModal}
-				modalClass={modalClass}
-			></UpdateClassInfo>
 		</div>
 	);
 };

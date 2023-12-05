@@ -4,13 +4,10 @@ import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const PopularInstructor = () => {
-
 	const { data: popInstructor = [] } = useQuery({
 		queryKey: ["popInstructor"],
 		queryFn: async () => {
-			const res = await axios.get(
-				"http://97.74.85.84:5050/allInstructors"
-			);
+			const res = await axios.get("http://97.74.85.84:5050/allInstructors");
 			return res.data;
 		},
 	});
@@ -30,8 +27,9 @@ const PopularInstructor = () => {
 				virtual fitness, wellness, and beauty services.
 			</p>
 
+			{/* popular instructor */}
 			<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-5">
-				{popInstructor?.slice(0,6).map((instructor, index) => (
+				{popInstructor?.slice(0, 6).map((instructor, index) => (
 					<div
 						key={instructor?._id}
 						className="flex justify-between flex-col rounded-md shadow-md dark:bg-gray-700 bg-gray-100"
